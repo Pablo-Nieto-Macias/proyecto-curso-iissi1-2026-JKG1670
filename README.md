@@ -1,11 +1,11 @@
 # Título Proyecto
 
-## Miembros del grupo LX-XXX-X (sustituir)
+## Miembros del grupo L4-FJO-8
 
 1. Ruda Adorna, Daniel
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
+2. González Pagador, Iván
+3. Gómez Botana, José Carlos
+4. Nieto Macías, Pablo
 
 ## 1. Introducción al problema
 
