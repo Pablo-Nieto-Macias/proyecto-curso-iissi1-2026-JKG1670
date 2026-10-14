@@ -133,8 +133,6 @@ para mantener el historial técnico de cada coche.
 
 #### 4.1.1. Requisitos de información
 
-##### R.I.01. Título requisito de información
-
 Como cliente quiero disponer de la siguiente información sobre los vehículos en venta:
 
 - La matrícula del vehículo
