@@ -47,10 +47,15 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 ## 3. Visión general del sistema
 
 ### 3.1. Requisitos generales
+
 RG-01. Sistema unificado y centralizado. El sistema integrará la información de todos los establecimientos de BLOB S.A.
+
 RG-02. Gestión de usuarios y roles. El sistema distinguirá entre clientes y empleados, y dentro de estos, entre comerciales y mecánicos.
+
 RG-03. Gestión de reparaciones. Cubrirá las reparaciones realizadas en los talleres, incluidos los recambios.
+
 RG-04. Reseñas y valoraciones. Los clientes podrán valorar su experiencia, dado que la reputación es un objetivo explícito del cliente.
+
 RG-05. Integridad y consistencia de los datos. La información debe ser coherente entre establecimientos.
 
 ### 3.2. Usuarios del sistema
