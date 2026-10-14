@@ -135,14 +135,74 @@ para mantener el historial técnico de cada coche.
 
 ##### R.I.01. Título requisito de información
 
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+# Requisitos de información
 
-**Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- ...
+## Cliente
+
+Como cliente quiero disponer de la siguiente información sobre los vehículos en venta:
+
+- La matrícula del vehículo
+- El precio del vehículo
+- El modelo del vehículo
+- Las fotos del vehículo subidas por el comercial
+- El punto de venta donde lo puedo adquirir
+- La marca del vehículo
+
+Como cliente quiero disponer de la siguiente información sobre los vehículos de mi propiedad que están en reparación:
+
+- Precio de la reparación
+- Recambios usados
+- Taller dónde se está haciendo la reparación:
+  - Dirección del taller
+- Duración estimada de la reparación
+- Mecánico encargado de la reparación:
+  - Nombre
+  - Apellidos
+  - Número de teléfono
+
+## Comercial
+
+Como comercial quiero disponer de la siguiente información sobre mi estado en el punto de venta donde trabajo:
+
+- Sueldo mensual por trabajar para BLOB S.A.
+- Información específica sobre el establecimiento:
+  - Dirección del punto de venta
+  - Horario de apertura
+- Información sobre los vehículos que están en venta en el punto de venta:
+  - La matrícula del vehículo
+  - El modelo del vehículo
+  - La marca del vehículo
+  - Estado del vehículo
+- Información de las gestorías que asegurarán a los vehículos:
+  - Nombre de la gestoría
+  - Tipo de seguro sobre el vehículo
+- Información sobre clientes que hayan comprado vehículos:
+  - DNI
+  - Nombre
+  - Apellidos
+  - Correo electrónico
+
+## Mecánico
+
+Como mecánico quiero disponer de la siguiente información sobre mi estado en el taller donde trabajo:
+
+- Sueldo mensual por trabajar para BLOB S.A.
+- Información sobre los recambios que necesito para las reparaciones:
+  - Detalles sobre el pedido de cada recambio necesario
+  - Nombre del recambio
+  - Costes del recambio
+  - Información sobre la/s pieza/s de recambio
+  - Posibles compatibilidades del recambio con los vehículos del taller
+- Información sobre los vehículos que están siendo reparados:
+  - La matrícula del vehículo
+  - El modelo del vehículo
+  - La marca del vehículo
+  - Estado del vehículo
+- Información sobre clientes que hayan solicitado la reparación de su vehículo:
+  - DNI
+  - Nombre
+  - Apellidos
+  - Correo electrónico
 
 #### 4.1.2. Reglas de negocio
 
