@@ -67,7 +67,7 @@ RG-05. Integridad y consistencia de los datos. La información debe ser coherent
 Se trata del consumidor del servicio. Sus funciones se limitan a:
 
 - Consultar el catálogo de coches disponibles en la base de datos aplicando filtros de búsqueda.
-- Hacer uso del servicio de taller del concesionario.
+- Hacer uso del servicio de taller del concesionario y consultar información sobre sus reparaciones
 - Escribir, publicar y editar reseñas de su experiencia.
 - Publicar anuncios de sus propios vehículos para su posterior venta.
 
