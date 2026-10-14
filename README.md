@@ -22,7 +22,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Clientes: usuarios que compran vehículos o solicitan una reparación.
 
 - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
-<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
+<img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
 
 - Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
 
@@ -37,7 +37,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Recambios: piezas que se le cambiarán al vehículo cuando esté defectuoso durante las reparaciones, podrán ser originales o no.
 
 - Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
-<img width="1500" height="1000" alt="image" src="https://github.com/user-attachments/assets/85f8076d-a982-475a-a07a-40b907f9db78" />
+<img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/85f8076d-a982-475a-a07a-40b907f9db78" />
 - Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
@@ -106,29 +106,36 @@ Sus funciones son:
 ### 4.1. Requisitos funcionales
 
 RF1 - Registro de clientes
+
 Como cliente,
 quiero crear una cuenta desde la web con mis datos personales ,para tramitar pedidos y reparaciones desde casa.
 
 RF2 - Gestión de establecimientos
+
 Como administrador,
 quiero registrar todos mis establecimientos indicando si son taller o punto de venta  para tener un sistema unificado con la información de todos los centros.
 
 RF3 - Alta de vehículos
+
 Como comercial,
 quiero registrar un vehículo indicando su tipo, características, precio y establecimiento, para mantener el catálogo actualizado.
 
 RF4 - Galería de fotos del vehículo
+
 Como comercial, quiero subir varias fotos a cada vehículo,para que el cliente pueda verlo en detalle antes de comprarlo.
 
 RF5 -  Búsqueda de vehículos
+
 Como cliente,
 quiero filtrar los vehículos por tipo, precio, marca y establecimiento, para encontrar rápidamente el que se ajusta a lo que busco.
 
 RF6 -  Registro de ventas
+
 Como comercial,
 quiero registrar una venta indicando cliente, vehículo y  tipo de venta  para llevar un control exacto de las operaciones.
 
 RF7 - Registro de reparaciones
+
 Como mecánico,
 quiero registrar cada reparación con el vehículo, tipo, avería, recambios usados y coste,
 para mantener el historial técnico de cada coche.
