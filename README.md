@@ -86,6 +86,7 @@ Se trata del trabajador que se encarga de reparar y mantener los vehículos.
 Sus funciones se limitan a:
 
 - Gestionar las citas de las reparaciones solicitadas y organizarlas según su categoría técnica.
+- Gestionar y registrar reparaciones con sus respectivos atributos (fecha, vehículo, categoría técnica...)
 - Organizar el inventario de recambios y tener la posibilidad de realizar pedidos en caso de falta de estos.
 
 #### 4. Administrador
