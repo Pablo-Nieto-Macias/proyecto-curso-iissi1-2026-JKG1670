@@ -49,9 +49,8 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 ### 3.1. Requisitos generales
 
 ### 3.2. Usuarios del sistema
-# Usuarios del sistema
 
-## 1. Cliente
+#### 1. Cliente
 
 Se trata del consumidor del servicio. Sus funciones se limitan a:
 
@@ -60,7 +59,7 @@ Se trata del consumidor del servicio. Sus funciones se limitan a:
 - Escribir, publicar y editar reseñas de su experiencia.
 - Publicar anuncios de sus propios vehículos para su posterior venta.
 
-## 2. Comercial
+#### 2. Comercial
 
 Se trata de la cara al público de los puntos de ventas del concesionario.
 
@@ -70,7 +69,7 @@ Sus funciones se limitan a:
 - Asociar la gestoría a la venta de un coche para establecer una póliza de seguro correspondiente a ese coche.
 - Registrar y organizar las entradas y salidas de coches en la base de datos (fotos, características del vehículo, etc.).
 
-## 3. Mecánico
+#### 3. Mecánico
 
 Se trata del trabajador que se encarga de reparar y mantener los vehículos.
 
@@ -79,7 +78,7 @@ Sus funciones se limitan a:
 - Gestionar las citas de las reparaciones solicitadas y organizarlas según su categoría técnica.
 - Organizar el inventario de recambios y tener la posibilidad de realizar pedidos en caso de falta de estos.
 
-## 4. Administrador
+#### 4. Administrador
 
 Se trata del gestor principal del sistema informático.
 
