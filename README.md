@@ -9,11 +9,28 @@
 
 ## 1. Introducción al problema
 
-- Descripción del problema para poner en contexto el proyecto, incluyendo información sobre los clientes y usuarios, la situación actual, problemas, expectativas, etc. Se valorará la presencia de información multimedia (fotos, gráficos, documentos escaneados, etc.).
+Fernando Sol Domecq es el propietario de una cadena de concesionarios de coches llamada BLOB S.A. que se ha quedado un poco atrás en la adaptación al mundo digital. Fernando acude a nosotros, SOLUCIONES INFORMÁTICAS ALJARAFE en búsqueda de darle un aire nuevo a la empresa y al mismo tiempo poder competir en buenas condiciones con el resto del sector.
+
+A nivel de estructura, su empresa cuenta con numerosos establecimientos por toda España uniformemente repartidos que cuentan con buena reputación. Tiene un buen público pero en comparación al resto de la competencia se queda atrás. Por lo tanto, él busca llegar a más clientes para que estos puedan tramitar sus pedidos, reparaciones, etc. desde la comodidad de su hogar, además de tener un sistema unificado y coherente con las propiedades del negocio general, es decir, que se incluya información de todos los establecimientos del país. En resumen, buscar ofrecer lo mismo a lo que ha llegado la competencia pero con el sello de calidad y experiencia de BLOB S.A. y facilitando la gestión de la empresa en sí en el proceso.
+
+En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente además de que gané buena fama a través de las reseñas y, ya que nuestros servicios son los líderes en calidad-precio y el buen resultado de este proyecto nos propulsaría aún más lejos
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e1c37026-a2d1-49bd-a08d-a912095cda89" />
 
 ## 2. Glosario de términos
 
-- Términos específicos del dominio del problema, ordenados alfabéticamente. Se valorará la presencia de información multimedia.
+-Clientes: usuarios que compran vehículos o solicitan una reparación.
+-Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
+-Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
+-Fotos: imagen de los vehículos a vender.
+-Gestoría: empresa externa encargada de los seguros de los vehículos vendidos y el resto de documentación.
+-Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
+-Punto de venta: espacio físico en donde se venden los vehículos.
+-Recambios: piezas que se le cambiarán al vehículo cuando esté defectuoso durante las reparaciones, podrán ser originales o no.
+-Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
+-Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
+-Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
+-Vehículo de ocasión: vehículo de segunda mano que se vende con garantía de que funcione correctamente.
 
 ## 3. Visión general del sistema
 
