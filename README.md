@@ -22,6 +22,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Clientes: usuarios que compran vehículos o solicitan una reparación.
 
 - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
 
 - Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
 
@@ -36,10 +37,11 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Recambios: piezas que se le cambiarán al vehículo cuando esté defectuoso durante las reparaciones, podrán ser originales o no.
 
 - Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
-
+<img width="1500" height="1000" alt="image" src="https://github.com/user-attachments/assets/85f8076d-a982-475a-a07a-40b907f9db78" />
 - Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
+<img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/2754d09d-1169-493e-82b6-6817df50d41c" />
 
 - Vehículo de ocasión: vehículo de segunda mano que se vende con garantía de que funcione correctamente.
 
