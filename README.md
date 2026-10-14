@@ -19,29 +19,29 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 ## 2. Glosario de términos
 
--Clientes: usuarios que compran vehículos o solicitan una reparación.
+- Clientes: usuarios que compran vehículos o solicitan una reparación.
 
--Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
+- Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
 
--Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
+- Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
 
--Fotos: imagen de los vehículos a vender.
+- Fotos: imagen de los vehículos a vender.
 
--Gestoría: empresa externa encargada de los seguros de los vehículos vendidos y el resto de documentación.
+- Gestoría: empresa externa encargada de los seguros de los vehículos vendidos y el resto de documentación.
 
--Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
+- Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
 
--Punto de venta: espacio físico en donde se venden los vehículos.
+- Punto de venta: espacio físico en donde se venden los vehículos.
 
--Recambios: piezas que se le cambiarán al vehículo cuando esté defectuoso durante las reparaciones, podrán ser originales o no.
+- Recambios: piezas que se le cambiarán al vehículo cuando esté defectuoso durante las reparaciones, podrán ser originales o no.
 
--Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
+- Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
 
--Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
+- Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
 
--Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
+- Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
 
--Vehículo de ocasión: vehículo de segunda mano que se vende con garantía de que funcione correctamente.
+- Vehículo de ocasión: vehículo de segunda mano que se vende con garantía de que funcione correctamente.
 
 
 ## 3. Visión general del sistema
