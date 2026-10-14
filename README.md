@@ -223,6 +223,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
+
 ### 4.3. Requisitos no funcionales (opcional)
 
 **RNF1 - Control de acceso**
