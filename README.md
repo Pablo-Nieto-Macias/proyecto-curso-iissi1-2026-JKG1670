@@ -103,17 +103,33 @@ Sus funciones son:
 
 ### 4.1. Requisitos funcionales
 
-#### R.F.01. Título requisito funcional
+RF1 - Registro de clientes
+Como cliente,
+quiero crear una cuenta desde la web con mis datos personales ,para tramitar pedidos y reparaciones desde casa.
 
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+RF2 - Gestión de establecimientos
+Como administrador,
+quiero registrar todos mis establecimientos indicando si son taller o punto de venta  para tener un sistema unificado con la información de todos los centros.
 
-**Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- Se debe aplicar la regla de negocio R.N.XX.
-- ...
+RF3 - Alta de vehículos
+Como comercial,
+quiero registrar un vehículo indicando su tipo, características, precio y establecimiento, para mantener el catálogo actualizado.
+
+RF4 - Galería de fotos del vehículo
+Como comercial, quiero subir varias fotos a cada vehículo,para que el cliente pueda verlo en detalle antes de comprarlo.
+
+RF5 -  Búsqueda de vehículos
+Como cliente,
+quiero filtrar los vehículos por tipo, precio, marca y establecimiento, para encontrar rápidamente el que se ajusta a lo que busco.
+
+RF6 -  Registro de ventas
+Como comercial,
+quiero registrar una venta indicando cliente, vehículo y  tipo de venta  para llevar un control exacto de las operaciones.
+
+RF7 - Registro de reparaciones
+Como mecánico,
+quiero registrar cada reparación con el vehículo, tipo, avería, recambios usados y coste,
+para mantener el historial técnico de cada coche.
 
 #### 4.1.1. Requisitos de información
 
