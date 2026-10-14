@@ -135,10 +135,6 @@ para mantener el historial técnico de cada coche.
 
 ##### R.I.01. Título requisito de información
 
-# Requisitos de información
-
-## Cliente
-
 Como cliente quiero disponer de la siguiente información sobre los vehículos en venta:
 
 - La matrícula del vehículo
@@ -160,8 +156,6 @@ Como cliente quiero disponer de la siguiente información sobre los vehículos d
   - Apellidos
   - Número de teléfono
 
-## Comercial
-
 Como comercial quiero disponer de la siguiente información sobre mi estado en el punto de venta donde trabajo:
 
 - Sueldo mensual por trabajar para BLOB S.A.
@@ -181,8 +175,6 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
   - Nombre
   - Apellidos
   - Correo electrónico
-
-## Mecánico
 
 Como mecánico quiero disponer de la siguiente información sobre mi estado en el taller donde trabajo:
 
