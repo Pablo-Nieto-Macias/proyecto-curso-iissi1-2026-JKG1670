@@ -75,7 +75,7 @@ Se trata de la cara al público de los puntos de ventas del concesionario.
 
 Sus funciones se limitan a:
 
-- Gestionar las ventas de coches y el estado de estas.
+- Gestionar y registrar las ventas de coches y el estado de estas.
 - Asociar la gestoría a la venta de un coche para establecer una póliza de seguro correspondiente a ese coche.
 - Registrar y organizar las entradas y salidas de coches en la base de datos (fotos, características del vehículo, etc.).
 
