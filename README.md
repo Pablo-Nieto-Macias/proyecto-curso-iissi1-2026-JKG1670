@@ -107,36 +107,36 @@ Sus funciones son:
 
 ### 4.1. Requisitos funcionales
 
-RF1 - Registro de clientes
+**RF1 - Registro de clientes**
 
 Como cliente,
 quiero crear una cuenta desde la web con mis datos personales ,para tramitar pedidos y reparaciones desde casa.
 
-RF2 - Gestión de establecimientos
+**RF2 - Gestión de establecimientos**
 
 Como administrador,
 quiero registrar todos mis establecimientos indicando si son taller o punto de venta  para tener un sistema unificado con la información de todos los centros.
 
-RF3 - Alta de vehículos
+**RF3 - Alta de vehículos**
 
 Como comercial,
 quiero registrar un vehículo indicando su tipo, características, precio y establecimiento, para mantener el catálogo actualizado.
 
-RF4 - Galería de fotos del vehículo
+**RF4 - Galería de fotos del vehículo**
 
 Como comercial, quiero subir varias fotos a cada vehículo,para que el cliente pueda verlo en detalle antes de comprarlo.
 
-RF5 -  Búsqueda de vehículos
+**RF5 -  Búsqueda de vehículos**
 
 Como cliente,
 quiero filtrar los vehículos por tipo, precio, marca y establecimiento, para encontrar rápidamente el que se ajusta a lo que busco.
 
-RF6 -  Registro de ventas
+**RF6 -  Registro de ventas**
 
 Como comercial,
 quiero registrar una venta indicando cliente, vehículo y  tipo de venta  para llevar un control exacto de las operaciones.
 
-RF7 - Registro de reparaciones
+**RF7 - Registro de reparaciones**
 
 Como mecánico,
 quiero registrar cada reparación con el vehículo, tipo, avería, recambios usados y coste,
@@ -144,6 +144,7 @@ para mantener el historial técnico de cada coche.
 
 #### 4.1.1. Requisitos de información
 
+**RI1**
 Como cliente quiero disponer de la siguiente información sobre los vehículos en venta:
 
 - La matrícula del vehículo
@@ -153,6 +154,7 @@ Como cliente quiero disponer de la siguiente información sobre los vehículos e
 - El punto de venta donde lo puedo adquirir
 - La marca del vehículo
 
+**RI2**
 Como cliente quiero disponer de la siguiente información sobre los vehículos de mi propiedad que están en reparación:
 
 - Precio de la reparación
@@ -165,6 +167,7 @@ Como cliente quiero disponer de la siguiente información sobre los vehículos d
   - Apellidos
   - Número de teléfono
 
+**RI3**
 Como comercial quiero disponer de la siguiente información sobre mi estado en el punto de venta donde trabajo:
 
 - Sueldo mensual por trabajar para BLOB S.A.
@@ -185,6 +188,7 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
   - Apellidos
   - Correo electrónico
 
+**RI4**
 Como mecánico quiero disponer de la siguiente información sobre mi estado en el taller donde trabajo:
 
 - Sueldo mensual por trabajar para BLOB S.A.
@@ -207,18 +211,31 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 #### 4.1.2. Reglas de negocio
 
-##### R.N.01. Título regla negocio
+**RN-1:** no pueden existir dos vehículos registrados con la misma matrícula o número de bastidor.
 
-Descripción de la regla de negocio.
+**RN-2:** para abrir una orden de reparación sobre un vehículo, este debe estar asociado a un cliente.
+
+**RN-3:** una reparación de tipo específica sólo puede ser efectuada por un empleado( mecánico) que cumpla con dicha especialización.
+
+**RN-4:** un usuario no puede registrarse dos veces con el mismo email.
+
+**RN-5:** un empleado no puede estar trabajando en más de un establecimiento a la vez.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
 ### 4.3. Requisitos no funcionales (opcional)
 
-**R.N.F. 01. Título requisito no funcional**
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+**RNF1 - Control de acceso**
+Como administrador, quiero que sólo puedan acceder al sistema los empleados de mi organización, para cumplir con la Ley de Protección de Datos.
+
+**RNF2 - Capacidad de usuarios simultáneos**
+Como administrador, quiero que el sistema soporte la conexión simultánea de los clientes y empleados de todos los establecimientos sin perder velocidad, para que el crecimiento del negocio no afecte al servicio. 
+
+**RNF3 - Compatibilidad con dispositivos**
+Como cliente, quiero que la plataforma funcione correctamente en móvil, tablet y ordenador y en los navegadores más habituales, para acceder desde cualquier dispositivo. 
+
+**RNF4 - Conservación del trabajo**
+Como mecánico, quiero que los datos introducidos no se pierdan si se corta la conexión, para no tener que repetir el registro de una reparación.
 
 -- fin entregable 1 --
 
