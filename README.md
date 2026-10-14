@@ -227,15 +227,19 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 ### 4.3. Requisitos no funcionales (opcional)
 
 **RNF1 - Control de acceso**
+
 Como administrador, quiero que sólo puedan acceder al sistema los empleados de mi organización, para cumplir con la Ley de Protección de Datos.
 
 **RNF2 - Capacidad de usuarios simultáneos**
+
 Como administrador, quiero que el sistema soporte la conexión simultánea de los clientes y empleados de todos los establecimientos sin perder velocidad, para que el crecimiento del negocio no afecte al servicio. 
 
 **RNF3 - Compatibilidad con dispositivos**
+
 Como cliente, quiero que la plataforma funcione correctamente en móvil, tablet y ordenador y en los navegadores más habituales, para acceder desde cualquier dispositivo. 
 
 **RNF4 - Conservación del trabajo**
+
 Como mecánico, quiero que los datos introducidos no se pierdan si se corta la conexión, para no tener que repetir el registro de una reparación.
 
 -- fin entregable 1 --
