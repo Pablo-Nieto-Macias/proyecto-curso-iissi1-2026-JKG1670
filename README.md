@@ -135,7 +135,7 @@ para [razón]
 Descripción de la regla de negocio.
 
 ### 4.2. Mapa de historias de usuario (opcional)
-
+<img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
 ### 4.3. Requisitos no funcionales (opcional)
 
 **R.N.F. 01. Título requisito no funcional**
