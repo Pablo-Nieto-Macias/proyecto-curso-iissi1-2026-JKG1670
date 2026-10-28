@@ -219,6 +219,10 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-5:** un empleado no puede estar trabajando en más de un establecimiento a la vez.
 
+**RN-6:** cuando se registre una nueva venta, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
+
+**RN-7:** un usuario no puede tener agendada más de una cita en el mismo día.
+
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
 
