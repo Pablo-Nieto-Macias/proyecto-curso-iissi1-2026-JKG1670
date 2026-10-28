@@ -247,7 +247,8 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ### 5.1. Diagramas de clases UML
 
-- con restricciones.
+<img width="1246" height="669" alt="image" src="https://github.com/user-attachments/assets/df1229ed-b5e9-4621-868f-dcda6fcc04b8" />
+
 
 ### 5.2. Escenarios de prueba
 
