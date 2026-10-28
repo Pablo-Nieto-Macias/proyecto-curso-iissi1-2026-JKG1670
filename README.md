@@ -28,6 +28,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
   - Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
 
+
 - Fotos: imagen de los vehículos a vender.
 
 - Gestoría: empresa externa encargada de los seguros de los vehículos vendidos y el resto de documentación.
