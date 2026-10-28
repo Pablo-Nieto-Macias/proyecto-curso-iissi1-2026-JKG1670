@@ -4,8 +4,7 @@
 
 1. Ruda Adorna, Daniel
 2. González Pagador, Iván
-3. Gómez Botana, José Carlos
-4. Nieto Macías, Pablo
+3. Nieto Macías, Pablo
 
 ## 1. Introducción al problema
 
@@ -21,17 +20,17 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 - Clientes: usuarios que compran vehículos o solicitan una reparación.
 
-- Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
+- Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
+
+  - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
 </center>
 
-- Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
+  - Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
 
 - Fotos: imagen de los vehículos a vender.
 
 - Gestoría: empresa externa encargada de los seguros de los vehículos vendidos y el resto de documentación.
-
-- Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
 
 - Punto de venta: espacio físico en donde se venden los vehículos.
 
