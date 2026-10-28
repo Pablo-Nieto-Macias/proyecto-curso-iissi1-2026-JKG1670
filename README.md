@@ -21,11 +21,10 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Clientes: usuarios que compran vehículos o solicitan una reparación.
 
 - Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
-
   - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
-<center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
-</center>
-  
+    <p align="center">
+      <img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
+    </p>
   - Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
 
 - Fotos: imagen de los vehículos a vender.
