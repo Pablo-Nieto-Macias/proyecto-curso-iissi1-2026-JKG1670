@@ -110,35 +110,74 @@ Sus funciones son:
 Como cliente,
 quiero crear una cuenta desde la web con mis datos personales ,para tramitar pedidos y reparaciones desde casa.
 
+<u>Pruebas de aceptación</u>
+
+- La cuenta se puede crear desde cualquier dispositivo accediendo a la web con los datos correspondientes
+- Una vez creada la cuenta, queda creado un usuario cuya información de identificación quedará alojada en la base de datos de la entidad Usuario
+- Se debe aplicar la RN-4
+
 **RF2 - Gestión de establecimientos**
 
 Como administrador,
 quiero registrar todos mis establecimientos indicando si son taller o punto de venta  para tener un sistema unificado con la información de todos los centros.
+
+<u>Pruebas de aceptación</u>
+
+- El administrador podrá registrar los establecimientos en la base de datos de la entidad Establecimiento.
+- Asimismo, podrá diferenciar entre punto de venta o taller de reparación a la hora de registrar los establecimientos.
+- Se aplica la regla de negocio RN-5.
 
 **RF3 - Alta de vehículos**
 
 Como comercial,
 quiero registrar un vehículo indicando su tipo, características, precio y establecimiento, para mantener el catálogo actualizado.
 
+<u>Pruebas de aceptación</u>
+
+- Se registra un nuevo vehículo con toda su respectiva información.
+- También se pueden modificar estos mismos datos para mantener la información actualizada.
+- Se aplica la regla de negocio RN-1.
+
 **RF4 - Galería de fotos del vehículo**
 
 Como comercial, quiero subir varias fotos a cada vehículo,para que el cliente pueda verlo en detalle antes de comprarlo.
+
+<u>Pruebas de aceptación</u>
+
+- Las fotos pueden subirse desde cualquier dispositivo.
+- El administrador puede revisar las fotos y en caso de considerarlas de mala calidad o incoherentes, eliminarlas.
 
 **RF5 -  Búsqueda de vehículos**
 
 Como cliente,
 quiero filtrar los vehículos por tipo, precio, marca y establecimiento, para encontrar rápidamente el que se ajusta a lo que busco.
 
+<u>Pruebas de aceptación</u>
+
+- El cliente, accediendo al portal web, podrá filtrar por diversos criterios de búsqueda.
+- Estos parámetros son definidos, es decir, se eligen a la hora de filtrar.
+
 **RF6 -  Registro de ventas**
 
 Como comercial,
 quiero registrar una venta indicando cliente, vehículo y  tipo de venta  para llevar un control exacto de las operaciones.
+
+<u>Pruebas de aceptación</u>
+
+- El registro de venta será único, es decir, no existirá una venta con un vehículo ya vendido.
+- Las ventas serán registradas en menos de 24h una vez esté el pago realizado por parte del cliente.
+- Se aplica la RN-6.
 
 **RF7 - Registro de reparaciones**
 
 Como mecánico,
 quiero registrar cada reparación con el vehículo, tipo, avería, recambios usados y coste,
 para mantener el historial técnico de cada coche.
+
+<u>Pruebas de aceptación</u>
+
+- Un mecánico registra las reparaciones sólo realizadas por él, no las de otros mecánicos que trabajan en su taller.
+- Se aplica la RN-2.
 
 #### 4.1.1. Requisitos de información
 
