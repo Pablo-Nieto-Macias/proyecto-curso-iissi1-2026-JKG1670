@@ -293,7 +293,8 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ### 5.2. Escenarios de prueba
 
-- con descripción textual y diagrama de objetos UML.
+<img width="2250" height="702" alt="blob_sa_escenario_prueba" src="https://github.com/user-attachments/assets/1ac4d0da-2e50-4f78-b1d5-5be03d45ab6c" />
+
 
 ## 6. Matrices de trazabilidad
 
