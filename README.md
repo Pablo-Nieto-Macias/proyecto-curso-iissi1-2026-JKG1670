@@ -311,17 +311,6 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 
 
-
-|       | EntidadX   | AsociaciónX  | RestricciónX  | Entidad2 ...   | 
-|:------|:-----------|:-----------|:-----------|:-----------|
-| RI-1  | X          | X          | X          | X          |
-| RI-2  |            | X          |            | X          |
-| RF-1  |            | X          |            | X          |
-| RF-2  | X          |            | X          | X          |
-| RN-1  |            | X          |            |            |
-| RN-2  | X          | X          | X          |            |
-| ...   |            |            |            |            |
-
 -- fin entregable 2 --
 
 ## 7. Modelo relacional en 3FN
