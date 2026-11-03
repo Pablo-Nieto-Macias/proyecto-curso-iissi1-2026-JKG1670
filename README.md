@@ -301,6 +301,17 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 - Matriz de trazabilidad entre los elementos del modelo conceptual y los requisitos.
 
+<img width="2694" height="1530" alt="matriz_trazabilidad" src="https://github.com/user-attachments/assets/2d6eacca-0435-4ef6-b935-ce410ba078d5" />
+
+
+
+
+
+
+
+
+
+
 |       | EntidadX   | AsociaciónX  | RestricciónX  | Entidad2 ...   | 
 |:------|:-----------|:-----------|:-----------|:-----------|
 | RI-1  | X          | X          | X          | X          |
