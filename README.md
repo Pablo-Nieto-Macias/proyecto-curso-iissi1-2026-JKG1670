@@ -289,12 +289,12 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ### 5.1. Diagramas de clases UML
 
-<img width="1825" height="1217" alt="blob_sa_modelo_conceptual_final" src="https://github.com/user-attachments/assets/fe12e285-0ec2-4fb8-bc6f-ece396fe8c10" />
+<img width="1993" height="1488" alt="blob_sa_modelo_conceptual_final" src="https://github.com/user-attachments/assets/e8dc5fd0-8603-4d2f-bb42-6bf827e32d4c" />
 
 
 ### 5.2. Escenarios de prueba
 
-<img width="3828" height="809" alt="blob_sa_escenario_prueba_2" src="https://github.com/user-attachments/assets/517047a5-3f86-4ac6-8542-0dc589472d51" />
+<img width="2419" height="858" alt="blob_sa_escenario_prueba_2" src="https://github.com/user-attachments/assets/78315338-9bee-4316-bd66-362e7a9322c4" />
 
 
 ## 6. Matrices de trazabilidad
