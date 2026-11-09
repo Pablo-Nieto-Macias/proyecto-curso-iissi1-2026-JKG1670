@@ -219,6 +219,9 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
 - Información de las gestorías que asegurarán a los vehículos:
   - Nombre de la gestoría
   - Tipo de seguro sobre el vehículo
+  - Sistema de pagos del seguro (mensual, trimestral o anual)
+  - Fecha de inicio del seguro
+  - Fecha de vigencia del seguro
 - Información sobre clientes que hayan comprado vehículos:
   - DNI
   - Nombre
