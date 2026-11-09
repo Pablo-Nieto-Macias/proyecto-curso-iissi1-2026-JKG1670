@@ -179,6 +179,16 @@ para mantener el historial técnico de cada coche.
 - Un mecánico registra las reparaciones sólo realizadas por él, no las de otros mecánicos que trabajan en su taller.
 - Se aplica la RN-2.
 
+**RF8 - Reseñas y valoraciones**
+
+Como cliente,
+quiero valorar con una puntuación y un comentario los servicios que he solicitado (compra o reparación), para compartir mi experiencia y ayudar a otros clientes.
+
+<u>Pruebas de aceptación</u>
+
+- Solo se puede escribir una reseña sobre un servicio (venta o reparación) solicitado por el propio cliente.
+- El cliente puede editar su reseña una vez publicada.
+
 #### 4.1.1. Requisitos de información
 
 **RI1**
