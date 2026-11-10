@@ -302,7 +302,7 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ### 5.1. Diagramas de clases UML
 
-<img width="1993" height="1488" alt="blob_sa_modelo_conceptual_final" src="https://github.com/user-attachments/assets/e8dc5fd0-8603-4d2f-bb42-6bf827e32d4c" />
+<img width="2107" height="1533" alt="blob_sa_modelo_conceptual_final" src="https://github.com/user-attachments/assets/2e34455a-003b-4cb6-b812-71fa8a982815" />
 
 
 ### 5.2. Escenarios de prueba
