@@ -328,7 +328,108 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ## 7. Modelo relacional en 3FN
 
-- Relaciones obtenidas al aplicar la transformación del modelo conceptual.
+Usuarios(id, dni, nombreCompleto, telefono, email, contraseña, fechaRegistro)
+PK(id);
+AK(email)
+
+Clientes(id)
+PK(id);
+FK(id)/Usuarios
+
+Empleados(id, salario, fechaContratacion, fechaBaja)
+PK(id);
+FK(id)/Usuarios
+
+Comerciales(id, puntoVentaId)
+PK(id);
+FK(id)/Empleados
+FK(puntoVentaId)/PuntosDeVenta
+
+Mecanicos(id, especialidad, tallerId)
+PK(id);
+FK(id)/Empleados
+FK(tallerId)/Talleres
+
+Gestores(id, gestoriaId)
+PK(id);
+FK(id)/Empleados
+FK(gestoriaId)/Gestorias
+
+Establecimientos(id, direccion, nombre, telefono)
+PK(id);
+
+PuntosDeVenta(id)
+PK(id);
+FK(id)/Establecimientos
+
+Talleres(id)
+PK(id);
+FK(id)/Establecimientos
+
+Gestorias(id)
+PK(id);
+FK(id)/Establecimientos
+
+Horarios(id, establecimientoId, diasSemana, horaApertura, horaCierre)
+PK(id);
+FK(establecimientoId)/Establecimientos
+
+ReparacionesVentas(id, fecha)
+PK(id);
+
+Reparaciones(id, descripcion, precio, duracion, tipoReparacion, tallerId, vehiculoId, mecanicoId)
+PK(id);
+FK(id)/ReparacionesVentas
+FK(tallerId)/Talleres
+FK(vehiculoId)/Vehiculos
+FK(mecanicoId)/Mecanicos
+
+Ventas(id, fechaPublicacion, tipo, vehiculoId, compradorId, vendedorId, comercialId)
+PK(id);
+FK(id)/ReparacionesVentas
+FK(vehiculoId)/Vehiculos
+FK(compradorId)/Clientes
+FK(vendedorId)/Clientes
+FK(comercialId)/Comerciales
+
+Reseñas(id, clienteId, reparacionVentaId, puntuacion, comentario, fechaPublicacion)
+PK(id);
+FK(clienteId)/Clientes
+FK(reparacionVentaId)/ReparacionesVentas
+AK(clienteId, reparacionVentaId)
+
+Vehiculos(id, matricula, precio, modelo, marca, combustible, estado, clienteId)
+PK(id);
+AK(matricula)
+FK(clienteId)/Clientes
+
+Fotos(id, vehiculoId, enlace, fechaSubida, esPrincipal)
+PK(id);
+FK(vehiculoId)/Vehiculos
+
+Seguros(id, vehiculoId, fechaContratacion, fechaInicioSeguro, fechaVigenciaSeguro, sistemaPagos, tipo)
+PK(id);
+FK(vehiculoId)/Vehiculos
+
+GestoriasSeguros(id, gestoriaId, seguroId)
+PK(id);
+FK(gestoriaId)/Gestorias
+FK(seguroId)/Seguros
+AK(gestoriaId, seguroId)
+
+Recambios(id, nombre, precio, stock, descripcion)
+PK(id);
+
+PedidosRecambios(id, fechaSolicitud, fechaLlegada, cantidad, mecanicoId, recambioId)
+PK(id);
+FK(mecanicoId)/Mecanicos
+FK(recambioId)/Recambios
+
+ReparacionesRecambios(id, reparacionId, recambioId)
+PK(id);
+FK(reparacionId)/Reparaciones
+FK(recambioId)/Recambios
+AK(reparacionId, recambioId)
 
 ### 7.1.  Justificación de la estrategia de transformación de jerarquías
 
