@@ -241,6 +241,22 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
 **RI4**
 Como mecánico quiero disponer de la siguiente información sobre mi estado en el taller donde trabajo:
 
+**RI5**
+Como gestor quiero disponer de la siguiente información sobre mi estado en la gestoría donde trabajo:
+
+- Sueldo mensual por trabajar para BLOB S.A.
+- Información específica sobre el establecimiento:
+  - Dirección de la gestoría
+  - Horario de apertura
+- Información sobre los seguros que gestiono:
+  - Tipo de seguro sobre el vehículo
+  - Sistema de pagos del seguro (mensual, trimestral o anual)
+  - Fecha de inicio del seguro
+  - Fecha de vigencia del seguro
+- Información sobre los vehículos asegurados:
+  - La matrícula del vehículo
+  - El modelo del vehículo
+  - La marca del vehículo
 - Sueldo mensual por trabajar para BLOB S.A.
 - Información sobre los recambios que necesito para las reparaciones:
   - Detalles sobre el pedido de cada recambio necesario
@@ -258,6 +274,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
   - Nombre
   - Apellidos
   - Correo electrónico
+
 
 #### 4.1.2. Reglas de negocio
 
