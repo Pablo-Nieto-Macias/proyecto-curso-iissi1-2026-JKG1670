@@ -52,7 +52,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 **RG-01.** Sistema unificado y centralizado. El sistema integrará la información de todos los establecimientos de BLOB S.A.
 
-**RG-02.** Gestión de usuarios y roles. El sistema distinguirá entre clientes y empleados, y dentro de estos, entre comerciales y mecánicos.
+**RG-02.** Gestión de usuarios y roles. El sistema distinguirá entre clientes y empleados, y dentro de estos, entre comerciales, mecánicos y gestores.
 
 **RG-03.** Gestión de reparaciones. Cubrirá las reparaciones realizadas en los talleres, incluidos los recambios.
 
@@ -101,6 +101,15 @@ Sus funciones son:
 - Gestionar los establecimientos de la empresa en la base de datos (puntos de venta y talleres).
 - Administrar a los demás usuarios y, en el caso de los trabajadores, poder asignarles un establecimiento específico.
 
+#### 5. Gestor
+
+Se trata del trabajador de una gestoría que se encarga de los seguros de los vehículos vendidos.
+
+Sus funciones se limitan a:
+
+- Registrar y gestionar los seguros de los vehículos vendidos (tipo de seguro, sistema de pagos y fechas).
+
+
 ## 4. Catálogo de requisitos
 
 ### 4.1. Requisitos funcionales
@@ -119,7 +128,7 @@ quiero crear una cuenta desde la web con mis datos personales ,para tramitar ped
 **RF2 - Gestión de establecimientos**
 
 Como administrador,
-quiero registrar todos mis establecimientos indicando si son taller o punto de venta  para tener un sistema unificado con la información de todos los centros.
+quiero registrar todos mis establecimientos indicando si son taller, punto de venta o gestoría para tener un sistema unificado con la información de todos los centros.
 
 <u>Pruebas de aceptación</u>
 
@@ -210,13 +219,11 @@ Como cliente quiero disponer de la siguiente información sobre los vehículos d
   - Dirección del taller
 - Duración estimada de la reparación
 - Mecánico encargado de la reparación:
-  - Nombre
-  - Apellidos
+  - Nombre completo
   - Número de teléfono
 
 **RI3**
 Como comercial quiero disponer de la siguiente información sobre mi estado en el punto de venta donde trabajo:
-
 - Sueldo mensual por trabajar para BLOB S.A.
 - Información específica sobre el establecimiento:
   - Dirección del punto de venta
@@ -234,29 +241,11 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
   - Fecha de vigencia del seguro
 - Información sobre clientes que hayan comprado vehículos:
   - DNI
-  - Nombre
-  - Apellidos
+  - Nombre completo
   - Correo electrónico
 
 **RI4**
 Como mecánico quiero disponer de la siguiente información sobre mi estado en el taller donde trabajo:
-
-**RI5**
-Como gestor quiero disponer de la siguiente información sobre mi estado en la gestoría donde trabajo:
-
-- Sueldo mensual por trabajar para BLOB S.A.
-- Información específica sobre el establecimiento:
-  - Dirección de la gestoría
-  - Horario de apertura
-- Información sobre los seguros que gestiono:
-  - Tipo de seguro sobre el vehículo
-  - Sistema de pagos del seguro (mensual, trimestral o anual)
-  - Fecha de inicio del seguro
-  - Fecha de vigencia del seguro
-- Información sobre los vehículos asegurados:
-  - La matrícula del vehículo
-  - El modelo del vehículo
-  - La marca del vehículo
 - Sueldo mensual por trabajar para BLOB S.A.
 - Información sobre los recambios que necesito para las reparaciones:
   - Detalles sobre el pedido de cada recambio necesario
@@ -271,14 +260,13 @@ Como gestor quiero disponer de la siguiente información sobre mi estado en la g
   - Estado del vehículo
 - Información sobre clientes que hayan solicitado la reparación de su vehículo:
   - DNI
-  - Nombre
-  - Apellidos
+  - Nombre completo
   - Correo electrónico
-
+ 
 
 #### 4.1.2. Reglas de negocio
 
-**RN-1:** no pueden existir dos vehículos registrados con la misma matrícula o número de bastidor.
+**RN-1:** no pueden existir dos vehículos registrados con la misma matrícula.
 
 **RN-2:** para abrir una orden de reparación sobre un vehículo, este debe estar asociado a un cliente.
 
@@ -290,7 +278,7 @@ Como gestor quiero disponer de la siguiente información sobre mi estado en la g
 
 **RN-6:** cuando se registre una nueva venta, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
 
-**RN-7:** un usuario no puede tener agendada más de una cita en el mismo día.
+**RN-7:** un cliente no puede tener agendada más de una cita en el mismo día.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
