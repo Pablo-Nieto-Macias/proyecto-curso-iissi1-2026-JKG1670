@@ -20,12 +20,13 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 - Clientes: usuarios que compran vehículos o solicitan una reparación.
 
-- Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, o comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta.
+- Empleados: tienen permisos de administrador en el sistema. Además se diferencian en ser mecánico, que trabajan en talleres, comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta, gestor, que trabaja en una gestoría o administrador.
   - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
     <p align="center">
       <img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
     </p>
   - Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
+  - Gestor: empleado que trabaja en una gestoría encargado de los seguros encargado de los seguros los vehículos vendidos.
 
 - Fotos: imagen de los vehículos a vender.
 
@@ -38,7 +39,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/85f8076d-a982-475a-a07a-40b907f9db78" /></center>
 
-- Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados del punto de venta, con distintos privilegios.
+- Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados, con distintos privilegios.
 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/2754d09d-1169-493e-82b6-6817df50d41c" /></center>
@@ -98,7 +99,7 @@ Se trata del gestor principal del sistema informático.
 Sus funciones son:
 
 - Tener acceso a todo el sistema y todos los privilegios, es decir, tener acceso a todas las funciones de los demás roles.
-- Gestionar los establecimientos de la empresa en la base de datos (puntos de venta y talleres).
+- Gestionar los establecimientos de la empresa en la base de datos (puntos de venta, talleres o gestorías).
 - Administrar a los demás usuarios y, en el caso de los trabajadores, poder asignarles un establecimiento específico.
 
 #### 5. Gestor
@@ -133,7 +134,7 @@ quiero registrar todos mis establecimientos indicando si son taller, punto de ve
 <u>Pruebas de aceptación</u>
 
 - El administrador podrá registrar los establecimientos en la base de datos de la entidad Establecimiento.
-- Asimismo, podrá diferenciar entre punto de venta o taller de reparación a la hora de registrar los establecimientos.
+- Asimismo, podrá diferenciar entre punto de venta, taller de reparación o gestoría a la hora de registrar los establecimientos.
 - Se aplica la regla de negocio RN-5.
 
 **RF3 - Alta de vehículos**
@@ -278,7 +279,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-6:** cuando se registre una nueva venta, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
 
-**RN-7:** un cliente no puede tener agendada más de una cita en el mismo día.
+**RN-7:** un cliente no puede tener agendada más de una reparación en el mismo día.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
@@ -287,7 +288,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RNF1 - Control de acceso**
 
-Como administrador, quiero que sólo puedan acceder al sistema los empleados de mi organización, para cumplir con la Ley de Protección de Datos.
+Como administrador, quiero que sólo puedan acceder al sistema de la empresa los empleados de mi organización, para cumplir con la Ley de Protección de Datos.
 
 **RNF2 - Capacidad de usuarios simultáneos**
 
