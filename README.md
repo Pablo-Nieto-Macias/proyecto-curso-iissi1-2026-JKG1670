@@ -275,7 +275,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-4:** un usuario no puede registrarse dos veces con el mismo email.
 
-**RN-5:** un empleado no puede estar trabajando en más de un establecimiento a la vez.
+**RN-5:** un empleado no puede estar trabajando en más de un establecimiento a la vez, si tiene varios roles, todos ellos deberán ser del mismo establecimiento.
 
 **RN-6:** cuando se registre una nueva venta, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
 
