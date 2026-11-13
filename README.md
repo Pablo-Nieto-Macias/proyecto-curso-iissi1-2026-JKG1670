@@ -308,12 +308,14 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ### 5.1. Diagramas de clases UML
 
-<img width="2107" height="1533" alt="blob_sa_modelo_conceptual_final" src="https://github.com/user-attachments/assets/2e34455a-003b-4cb6-b812-71fa8a982815" />
+<img width="2616" height="1302" alt="modelado_conceptual" src="https://github.com/user-attachments/assets/2dc7e6aa-350a-42e3-a2c7-3c6558f64b2a" />
+
 
 
 ### 5.2. Escenarios de prueba
 
-<img width="2419" height="858" alt="blob_sa_escenario_prueba_2" src="https://github.com/user-attachments/assets/78315338-9bee-4316-bd66-362e7a9322c4" />
+<img width="3200" height="1219" alt="blob_sa_escenario_prueba" src="https://github.com/user-attachments/assets/3337a749-9998-42f9-bf04-f1c9b8f70af2" />
+
 
 
 ## 6. Matrices de trazabilidad
@@ -336,6 +338,7 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 Usuarios(id, dni, nombreCompleto, telefono, email, contraseña, fechaRegistro)
 PK(id);
+AK(dni);
 AK(email)
 
 Clientes(id)
@@ -346,20 +349,25 @@ Empleados(id, salario, fechaContratacion, fechaBaja)
 PK(id);
 FK(id)/Usuarios
 
+Administradores(id)
+PK(id);
+FK(id)/Empleados
+
 Comerciales(id, puntoVentaId)
 PK(id);
 FK(id)/Empleados
 FK(puntoVentaId)/PuntosDeVenta
+
+Gestores(id, gestoriaId)
+PK(id);
+FK(id)/Empleados
+FK(gestoriaId)/Gestorias
 
 Mecanicos(id, especialidad, tallerId)
 PK(id);
 FK(id)/Empleados
 FK(tallerId)/Talleres
 
-Gestores(id, gestoriaId)
-PK(id);
-FK(id)/Empleados
-FK(gestoriaId)/Gestorias
 
 Establecimientos(id, direccion, nombre, telefono)
 PK(id);
@@ -368,11 +376,11 @@ PuntosDeVenta(id)
 PK(id);
 FK(id)/Establecimientos
 
-Talleres(id)
+Gestorias(id)
 PK(id);
 FK(id)/Establecimientos
 
-Gestorias(id)
+Talleres(id)
 PK(id);
 FK(id)/Establecimientos
 
@@ -380,50 +388,48 @@ Horarios(id, establecimientoId, diasSemana, horaApertura, horaCierre)
 PK(id);
 FK(establecimientoId)/Establecimientos
 
-ReparacionesVentas(id, fecha)
-PK(id);
 
-Reparaciones(id, descripcion, precio, duracion, tipoReparacion, tallerId, vehiculoId, mecanicoId)
+Servicios(id, fecha, vehiculoId)
 PK(id);
-FK(id)/ReparacionesVentas
-FK(tallerId)/Talleres
 FK(vehiculoId)/Vehiculos
-FK(mecanicoId)/Mecanicos
 
-Ventas(id, fechaPublicacion, tipo, vehiculoId, compradorId, vendedorId, comercialId)
+Ventas(id, fechaPublicacion, tipo, compradorId, vendedorId, comercialId)
 PK(id);
-FK(id)/ReparacionesVentas
-FK(vehiculoId)/Vehiculos
+FK(id)/Servicios
 FK(compradorId)/Clientes
 FK(vendedorId)/Clientes
 FK(comercialId)/Comerciales
 
-Reseñas(id, clienteId, reparacionVentaId, puntuacion, comentario, fechaPublicacion)
+Reparaciones(id, descripcion, precio, duracion, fechaCita, estado, tipoReparacion, tallerId, mecanicoId)
+PK(id);
+FK(id)/Servicios
+FK(tallerId)/Talleres
+FK(mecanicoId)/Mecanicos
+
+
+Reseñas(id, clienteId, servicioId, puntuacion, comentario, fechaPublicacion)
 PK(id);
 FK(clienteId)/Clientes
-FK(reparacionVentaId)/ReparacionesVentas
-AK(clienteId, reparacionVentaId)
+FK(servicioId)/Servicios
+AK(clienteId, servicioId)
 
-Vehiculos(id, matricula, precio, modelo, marca, combustible, estado, clienteId)
+
+Vehiculos(id, matricula, precio, modelo, marca, tipo, combustible, estado, clienteId)
 PK(id);
-AK(matricula)
+AK(matricula);
 FK(clienteId)/Clientes
 
 Fotos(id, vehiculoId, enlace, fechaSubida, esPrincipal)
 PK(id);
 FK(vehiculoId)/Vehiculos
 
-Seguros(id, vehiculoId, fechaContratacion, fechaInicioSeguro, fechaVigenciaSeguro, sistemaPagos, tipo)
+Seguros(id, vehiculoId, gestoriaId, fechaContratacion, fechaInicioSeguro, fechaVigenciaSeguro, sistemaPagos, tipo)
 PK(id);
 FK(vehiculoId)/Vehiculos
-
-GestoriasSeguros(id, gestoriaId, seguroId)
-PK(id);
 FK(gestoriaId)/Gestorias
-FK(seguroId)/Seguros
-AK(gestoriaId, seguroId)
 
-Recambios(id, nombre, precio, stock, descripcion)
+
+Recambios(id, nombre, precio, stock, descripcion, esOriginal)
 PK(id);
 
 PedidosRecambios(id, fechaSolicitud, fechaLlegada, cantidad, mecanicoId, recambioId)
@@ -431,11 +437,54 @@ PK(id);
 FK(mecanicoId)/Mecanicos
 FK(recambioId)/Recambios
 
-ReparacionesRecambios(id, reparacionId, recambioId)
+
+EmpleadosVehiculos(id, empleadoId, vehiculoId)
+PK(id);
+FK(empleadoId)/Empleados
+FK(vehiculoId)/Vehiculos
+AK(empleadoId, vehiculoId)
+
+VehiculosRecambios(id, vehiculoId, recambioId)
+PK(id);
+FK(vehiculoId)/Vehiculos
+FK(recambioId)/Recambios
+AK(vehiculoId, recambioId)
+
+UsosRecambios(id, reparacionId, recambioId, cantidad)
 PK(id);
 FK(reparacionId)/Reparaciones
 FK(recambioId)/Recambios
 AK(reparacionId, recambioId)
+
+
+Hay que distinguir entre las tablas que aparecen directamente en el modelo conceptual y las que necesitamos generar al transformar asociaciones:
+
+EmpleadosVehiculos	Empleado – Vehículo (exhibe):
+
+Un empleado puede exhibir varios vehículos y un vehículo puede ser exhibido por varios empleados.
+
+VehiculosRecambios	Vehículo – Recambio (esCompatibleCon)	Un vehículo puede ser compatible con varios recambios y un recambio puede servir para varios vehículos.
+
+Estas dos son las tablas auxiliares para resolver las asociaciones N:M.
+
+
+Para transformar las especializaciones:
+
+Hemos utilizado la técnica "una relación para cada clase de la jerarquía" 
+
+Consiste en:
+1. Crear una tabla para la superclase.
+2. Crear otra tabla para cada subclase.
+3. La PK de cada subclase es también una FK que apunta a la superclase.
+
+A. Usuario → Cliente y Empleado
+
+B. Empleado → Administrador, Comercial, Gestor y Mecánico
+
+C. Establecimiento → PuntoDeVenta, Gestoría y Taller
+
+D. Servicio → Venta y Reparación
+
 
 ### 7.1.  Justificación de la estrategia de transformación de jerarquías
 
