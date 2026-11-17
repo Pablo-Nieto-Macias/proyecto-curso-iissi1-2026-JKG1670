@@ -44,8 +44,6 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/2754d09d-1169-493e-82b6-6817df50d41c" /></center>
 
-- Vehículo de ocasión: vehículo de segunda mano que se vende con garantía de que funcione correctamente.
-
 
 ## 3. Visión general del sistema
 
