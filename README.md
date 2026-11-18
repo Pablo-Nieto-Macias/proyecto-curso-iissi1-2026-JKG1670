@@ -320,7 +320,8 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 - Matriz de trazabilidad entre los elementos del modelo conceptual y los requisitos.
 
-<img width="2694" height="1530" alt="matriz_trazabilidad" src="https://github.com/user-attachments/assets/2d6eacca-0435-4ef6-b935-ce410ba078d5" />
+
+<img width="1351" height="817" alt="Captura de pantalla 2026-11-18 171845" src="https://github.com/user-attachments/assets/b69b91c8-4bc1-4547-bff9-d81fd888e4aa" />
 
 
 
