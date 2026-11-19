@@ -336,6 +336,7 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 ## 7. Modelo relacional en 3FN
 
 Usuarios(id, dni, nombreCompleto, telefono, email, contraseña, fechaRegistro)
+
 PK(id);
 AK(dni);
 AK(email)
