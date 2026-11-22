@@ -34,7 +34,7 @@ CREATE TABLE Usuarios (
     email VARCHAR(255) UNIQUE NOT NULL,  -- RN 4                            
     contrasena VARCHAR(255) NOT NULL,
     fechaRegistro DATE NOT NULL,
-    CONSTRAINT contrasenaCorta CHECK(CHAR_LENGTH(contrasena) >= 8)
+    CONSTRAINT RN9 CHECK(CHAR_LENGTH(contrasena) >= 8)
 );
 
 CREATE TABLE Clientes (
@@ -46,13 +46,14 @@ CREATE TABLE Clientes (
 
 CREATE TABLE Empleados (
     id INT PRIMARY KEY,
-    salario DECIMAL(10, 2) NOT NULL CHECK (salario >= 0),
+    salario DECIMAL(10, 2) NOT NULL,
     fechaContratacion DATE NOT NULL,
     fechaBaja DATE,
     FOREIGN KEY (id) REFERENCES Usuarios(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CHECK (fechaBaja IS NULL OR fechaBaja >= fechaContratacion)
+    CONSTRAINT RN10 CHECK (fechaBaja IS NULL OR fechaBaja >= fechaContratacion),
+    CONSTRAINT RN11 CHECK (salario >= 0)
 );
 
 CREATE TABLE Administradores (
@@ -96,13 +97,15 @@ CREATE TABLE Talleres (
 CREATE TABLE Horarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
     establecimientoId INT NOT NULL,
-    diasSemana VARCHAR(50) NOT NULL,
+    diaSemana VARCHAR(10) NOT NULL CHECK (diaSemana IN
+        ('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo')),
     horaApertura TIME NOT NULL,
     horaCierre TIME NOT NULL,
     FOREIGN KEY (establecimientoId) REFERENCES Establecimientos(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CHECK (horaCierre > horaApertura)
+    CONSTRAINT RN12 CHECK (horaCierre > horaApertura),
+    UNIQUE (establecimientoId, diaSemana, horaApertura)
 );
 
 -- =====================================================
@@ -150,7 +153,7 @@ CREATE TABLE Mecanicos (
 CREATE TABLE Vehiculos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     matricula VARCHAR(10) UNIQUE NOT NULL,  -- RN-1
-    precio DECIMAL(10, 2) NOT NULL CHECK (precio >= 0),
+    precio DECIMAL(10, 2) NOT NULL,
     modelo VARCHAR(100) NOT NULL,
     marca VARCHAR(100) NOT NULL,
     tipo VARCHAR(10) NOT NULL CHECK (tipo IN ('Coche', 'Moto', 'Camión')),
@@ -161,7 +164,8 @@ CREATE TABLE Vehiculos (
     clienteId INT,
     FOREIGN KEY (clienteId) REFERENCES Clientes(id)
         ON DELETE SET NULL
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT RN13 CHECK (precio >= 0)
 );
 
 CREATE TABLE Fotos (
@@ -192,7 +196,7 @@ CREATE TABLE Seguros (
     FOREIGN KEY (gestoriaId) REFERENCES Gestorias(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    CHECK (fechaVigenciaSeguro > fechaInicioSeguro)
+    CONSTRAINT RN14 CHECK (fechaVigenciaSeguro > fechaInicioSeguro)
 );
 
 -- =====================================================
@@ -229,20 +233,20 @@ CREATE TABLE Ventas (
     FOREIGN KEY (comercialId) REFERENCES Comerciales(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    CHECK (
+    CONSTRAINT RN15 CHECK (
         (vendedorTipo = 'Cliente' AND vendedorId IS NOT NULL)
         OR
         (vendedorTipo = 'Concesionario' AND vendedorId IS NULL)
     ),
 
-    CHECK (vendedorId IS NULL OR compradorId <> vendedorId)
+    CONSTRAINT RN16 CHECK (vendedorId IS NULL OR compradorId <> vendedorId)
 );
 
 CREATE TABLE Reparaciones (
     id INT PRIMARY KEY,
     descripcion TEXT NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL CHECK (precio >= 0),
-    duracion INT NOT NULL CHECK (duracion > 0), -- en minutos
+    precio DECIMAL(10, 2) NOT NULL,
+    duracion INT NOT NULL, -- en minutos
     fechaCita DATE NOT NULL,
     estado VARCHAR(15) NOT NULL CHECK (estado IN
         ('Pendiente', 'EnCurso', 'Finalizada', 'Cancelada')),
@@ -259,14 +263,16 @@ CREATE TABLE Reparaciones (
         ON UPDATE CASCADE,
     FOREIGN KEY (mecanicoId) REFERENCES Mecanicos(id)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT RN17 CHECK (precio >= 0),
+   CONSTRAINT RN18 CHECK (duracion > 0)
 );
 
 CREATE TABLE Resenas (
     id INT PRIMARY KEY AUTO_INCREMENT,
     clienteId INT NOT NULL,
     servicioId INT NOT NULL,
-    puntuacion INT NOT NULL CHECK (puntuacion BETWEEN 1 AND 5),
+    puntuacion INT NOT NULL,
     comentario TEXT,
     fechaPublicacion DATE NOT NULL,
     FOREIGN KEY (clienteId) REFERENCES Clientes(id)
@@ -275,7 +281,8 @@ CREATE TABLE Resenas (
     FOREIGN KEY (servicioId) REFERENCES Servicios(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    UNIQUE (clienteId, servicioId)
+    UNIQUE (clienteId, servicioId),
+    CONSTRAINT RN19 CHECK (puntuacion BETWEEN 1 AND 5)
 );
 
 -- =====================================================
@@ -284,10 +291,12 @@ CREATE TABLE Resenas (
 CREATE TABLE Recambios (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL CHECK (precio >= 0),
-    stock INT NOT NULL DEFAULT 0 CHECK (stock >= 0),
+    precio DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
     descripcion TEXT,
-    esOriginal BOOLEAN NOT NULL DEFAULT TRUE
+    esOriginal BOOLEAN NOT NULL DEFAULT TRUE,
+   CONSTRAINT RN20 CHECK (precio >= 0),
+   CONSTRAINT RN21 CHECK (stock >= 0)
 );
 
 CREATE TABLE PedidosRecambios (
@@ -303,7 +312,7 @@ CREATE TABLE PedidosRecambios (
     FOREIGN KEY (recambioId) REFERENCES Recambios(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    CHECK (fechaLlegada IS NULL OR fechaLlegada >= fechaSolicitud)
+    CONSTRAINT RN22 CHECK (fechaLlegada IS NULL OR fechaLlegada >= fechaSolicitud)
 );
 
 CREATE TABLE UsosRecambios (
@@ -318,7 +327,7 @@ CREATE TABLE UsosRecambios (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     UNIQUE (reparacionId, recambioId),
-    CONSTRAINT cantidadPositiva CHECK (cantidad > 0)
+    CONSTRAINT RN23 CHECK (cantidad > 0)
 );
 
 CREATE TABLE VehiculosRecambios (
