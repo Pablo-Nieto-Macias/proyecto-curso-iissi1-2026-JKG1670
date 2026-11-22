@@ -335,126 +335,121 @@ Como mecánico, quiero que los datos introducidos no se pierdan si se corta la c
 
 ## 7. Modelo relacional en 3FN
 
+```text
 Usuarios(id, dni, nombreCompleto, telefono, email, contraseña, fechaRegistro)
-
-PK(id);
-AK(dni);
+PK(id)
+AK(dni)
 AK(email)
 
 Clientes(id)
-PK(id);
+PK(id)
 FK(id)/Usuarios
 
 Empleados(id, salario, fechaContratacion, fechaBaja)
-PK(id);
+PK(id)
 FK(id)/Usuarios
 
 Administradores(id)
-PK(id);
+PK(id)
 FK(id)/Empleados
 
 Comerciales(id, puntoVentaId)
-PK(id);
+PK(id)
 FK(id)/Empleados
 FK(puntoVentaId)/PuntosDeVenta
 
 Gestores(id, gestoriaId)
-PK(id);
+PK(id)
 FK(id)/Empleados
 FK(gestoriaId)/Gestorias
 
 Mecanicos(id, especialidad, tallerId)
-PK(id);
+PK(id)
 FK(id)/Empleados
 FK(tallerId)/Talleres
 
-
 Establecimientos(id, direccion, nombre, telefono)
-PK(id);
+PK(id)
 
 PuntosDeVenta(id)
-PK(id);
+PK(id)
 FK(id)/Establecimientos
 
 Gestorias(id)
-PK(id);
+PK(id)
 FK(id)/Establecimientos
 
 Talleres(id)
-PK(id);
+PK(id)
 FK(id)/Establecimientos
 
 Horarios(id, establecimientoId, diasSemana, horaApertura, horaCierre)
-PK(id);
+PK(id)
 FK(establecimientoId)/Establecimientos
 
-
 Servicios(id, fecha, vehiculoId)
-PK(id);
+PK(id)
 FK(vehiculoId)/Vehiculos
 
 Ventas(id, fechaPublicacion, tipo, compradorId, vendedorId, comercialId)
-PK(id);
+PK(id)
 FK(id)/Servicios
 FK(compradorId)/Clientes
 FK(vendedorId)/Clientes
 FK(comercialId)/Comerciales
 
 Reparaciones(id, descripcion, precio, duracion, fechaCita, estado, tipoReparacion, tallerId, mecanicoId)
-PK(id);
+PK(id)
 FK(id)/Servicios
 FK(tallerId)/Talleres
 FK(mecanicoId)/Mecanicos
 
-
 Reseñas(id, clienteId, servicioId, puntuacion, comentario, fechaPublicacion)
-PK(id);
+PK(id)
 FK(clienteId)/Clientes
 FK(servicioId)/Servicios
 AK(clienteId, servicioId)
 
-
 Vehiculos(id, matricula, precio, modelo, marca, tipo, combustible, estado, clienteId)
-PK(id);
-AK(matricula);
+PK(id)
+AK(matricula)
 FK(clienteId)/Clientes
 
 Fotos(id, vehiculoId, enlace, fechaSubida, esPrincipal)
-PK(id);
+PK(id)
 FK(vehiculoId)/Vehiculos
 
 Seguros(id, vehiculoId, gestoriaId, fechaContratacion, fechaInicioSeguro, fechaVigenciaSeguro, sistemaPagos, tipo)
-PK(id);
+PK(id)
 FK(vehiculoId)/Vehiculos
 FK(gestoriaId)/Gestorias
 
-
 Recambios(id, nombre, precio, stock, descripcion, esOriginal)
-PK(id);
+PK(id)
 
 PedidosRecambios(id, fechaSolicitud, fechaLlegada, cantidad, mecanicoId, recambioId)
-PK(id);
+PK(id)
 FK(mecanicoId)/Mecanicos
 FK(recambioId)/Recambios
 
-
 EmpleadosVehiculos(id, empleadoId, vehiculoId)
-PK(id);
+PK(id)
 FK(empleadoId)/Empleados
 FK(vehiculoId)/Vehiculos
 AK(empleadoId, vehiculoId)
 
 VehiculosRecambios(id, vehiculoId, recambioId)
-PK(id);
+PK(id)
 FK(vehiculoId)/Vehiculos
 FK(recambioId)/Recambios
 AK(vehiculoId, recambioId)
 
 UsosRecambios(id, reparacionId, recambioId, cantidad)
-PK(id);
+PK(id)
 FK(reparacionId)/Reparaciones
 FK(recambioId)/Recambios
 AK(reparacionId, recambioId)
+```
 
 
 Hay que distinguir entre las tablas que aparecen directamente en el modelo conceptual y las que necesitamos generar al transformar asociaciones:
