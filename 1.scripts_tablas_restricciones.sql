@@ -217,9 +217,6 @@ CREATE TABLE Ventas (
     tipo VARCHAR(15) NOT NULL CHECK (tipo IN
         ('Ocasión', 'KM0', 'Nuevo', 'SemiNuevo', 'SegundaMano')),
     compradorId INT NOT NULL,
-    vendedorId INT,
-    vendedorTipo VARCHAR(15) NOT NULL CHECK (vendedorTipo IN
-        ('Cliente', 'Concesionario')),
     comercialId INT NOT NULL,
     FOREIGN KEY (id) REFERENCES Servicios(id)
         ON DELETE CASCADE
@@ -227,19 +224,9 @@ CREATE TABLE Ventas (
     FOREIGN KEY (compradorId) REFERENCES Clientes(id)
         ON DELETE RESTRICT
         ON UPDATE RESTRICT,
-    FOREIGN KEY (vendedorId) REFERENCES Clientes(id)
-        ON DELETE RESTRICT
-        ON UPDATE RESTRICT,
     FOREIGN KEY (comercialId) REFERENCES Comerciales(id)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE,
-    CONSTRAINT RN15 CHECK (
-        (vendedorTipo = 'Cliente' AND vendedorId IS NOT NULL)
-        OR
-        (vendedorTipo = 'Concesionario' AND vendedorId IS NULL)
-    ),
-
-    CONSTRAINT RN16 CHECK (vendedorId IS NULL OR compradorId <> vendedorId)
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE Reparaciones (
@@ -264,8 +251,8 @@ CREATE TABLE Reparaciones (
     FOREIGN KEY (mecanicoId) REFERENCES Mecanicos(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    CONSTRAINT RN17 CHECK (precio >= 0),
-   CONSTRAINT RN18 CHECK (duracion > 0)
+    CONSTRAINT RN15 CHECK (precio >= 0),
+   CONSTRAINT RN16 CHECK (duracion > 0)
 );
 
 CREATE TABLE Resenas (
@@ -282,7 +269,7 @@ CREATE TABLE Resenas (
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     UNIQUE (clienteId, servicioId),
-    CONSTRAINT RN19 CHECK (puntuacion BETWEEN 1 AND 5)
+    CONSTRAINT RN17 CHECK (puntuacion BETWEEN 1 AND 5)
 );
 
 -- =====================================================
@@ -295,8 +282,8 @@ CREATE TABLE Recambios (
     stock INT NOT NULL DEFAULT 0,
     descripcion TEXT,
     esOriginal BOOLEAN NOT NULL DEFAULT TRUE,
-   CONSTRAINT RN20 CHECK (precio >= 0),
-   CONSTRAINT RN21 CHECK (stock >= 0)
+   CONSTRAINT RN18 CHECK (precio >= 0),
+   CONSTRAINT RN19 CHECK (stock >= 0)
 );
 
 CREATE TABLE PedidosRecambios (
@@ -312,7 +299,7 @@ CREATE TABLE PedidosRecambios (
     FOREIGN KEY (recambioId) REFERENCES Recambios(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    CONSTRAINT RN22 CHECK (fechaLlegada IS NULL OR fechaLlegada >= fechaSolicitud)
+    CONSTRAINT RN20 CHECK (fechaLlegada IS NULL OR fechaLlegada >= fechaSolicitud)
 );
 
 CREATE TABLE UsosRecambios (
@@ -327,7 +314,7 @@ CREATE TABLE UsosRecambios (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     UNIQUE (reparacionId, recambioId),
-    CONSTRAINT RN23 CHECK (cantidad > 0)
+    CONSTRAINT RN21 CHECK (cantidad > 0)
 );
 
 CREATE TABLE VehiculosRecambios (
