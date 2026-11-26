@@ -277,35 +277,35 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-7:** un cliente no puede tener agendada más de una reparación en el mismo día.
 
-**RN-9:** la contraseña de un usuario debe tener al menos 8 caracteres.
+**RN-8:** la contraseña de un usuario debe tener al menos 8 caracteres.
 
-**RN-10:** la fecha de baja de un empleado, si existe, no puede ser anterior a su fecha de contratación.
+**RN-9:** la fecha de baja de un empleado, si existe, no puede ser anterior a su fecha de contratación.
 
-**RN-11:** el salario de un empleado no puede ser negativo.
+**RN-10:** el salario de un empleado no puede ser negativo.
 
-**RN-12:** la hora de cierre de un horario debe ser posterior a su hora de apertura.
+**RN-11:** la hora de cierre de un horario debe ser posterior a su hora de apertura.
 
-**RN-13:** el precio de un vehículo no puede ser negativo.
+**RN-12:** el precio de un vehículo no puede ser negativo.
 
-**RN-14:** la fecha de vigencia de un seguro debe ser posterior a su fecha de inicio.
+**RN-13:** la fecha de vigencia de un seguro debe ser posterior a su fecha de inicio.
 
-**RN-15:** el precio de una reparación no puede ser negativo.
+**RN-14:** el precio de una reparación no puede ser negativo.
 
-**RN-16:** la duración de una reparación debe ser mayor que cero.
+**RN-15:** la duración de una reparación debe ser mayor que cero.
 
-**RN-17:** la puntuación de una reseña debe estar comprendida entre 1 y 5.
+**RN-16:** la puntuación de una reseña debe estar comprendida entre 1 y 5.
 
-**RN-18:** el precio de un recambio no puede ser negativo.
+**RN-17:** el precio de un recambio no puede ser negativo.
 
-**RN-19:** el stock de un recambio no puede ser negativo.
+**RN-18:** el stock de un recambio no puede ser negativo.
 
-**RN-20:** la fecha de llegada de un pedido de recambio, si existe, no puede ser anterior a su fecha de solicitud.
+**RN-19:** la fecha de llegada de un pedido de recambio, si existe, no puede ser anterior a su fecha de solicitud.
 
-**RN-21:** la cantidad de un recambio usado en una reparación debe ser mayor que cero.
+**RN-20:** la cantidad de un recambio usado en una reparación debe ser mayor que cero.
 
-**RN-22:** el precio de venta de una venta no puede ser negativo.
+**RN-21:** el precio de venta de una venta no puede ser negativo.
 
-**RN-23:** la fecha de contratación de un seguro no puede ser posterior a su fecha de inicio.
+**RN-22:** la fecha de contratación de un seguro no puede ser posterior a su fecha de inicio.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
