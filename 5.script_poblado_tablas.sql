@@ -68,18 +68,15 @@ INSERT INTO Talleres (id) VALUES
 
 -- Insertar datos en la tabla Horarios
 INSERT INTO Horarios (establecimientoId, diaSemana, horaApertura, horaCierre) VALUES
-(1, 'Lunes', '09:00:00', '14:00:00'),     -- Punto de venta 1, turno de manana
-(1, 'Lunes', '16:00:00', '20:00:00'),     -- Punto de venta 1, turno de tarde (no se solapa)
-(1, 'Martes', '09:00:00', '14:00:00'),
-(1, 'Sabado', '10:00:00', '14:00:00'),
-(2, 'Lunes', '10:00:00', '20:00:00'),     -- Punto de venta 2, jornada continua
-(2, 'Viernes', '10:00:00', '20:00:00'),
-(3, 'Lunes', '08:30:00', '15:00:00'),     -- Gestoria
-(3, 'Jueves', '08:30:00', '15:00:00'),
-(4, 'Lunes', '08:00:00', '17:00:00'),     -- Taller Norte
-(4, 'Sabado', '09:00:00', '13:00:00'),
-(5, 'Martes', '08:00:00', '17:00:00'),    -- Taller Sur
-(5, 'Viernes', '08:00:00', '15:00:00');
+(1, 'L-V', '09:00:00', '14:00:00'),     -- Punto de venta 1, turno de manana
+(1, 'L-J', '16:00:00', '20:00:00'),     -- Punto de venta 1, turno de tarde (no se solapa)
+(1, 'S', '10:00:00', '14:00:00'),
+(2, 'L-V', '10:00:00', '20:00:00'),     -- Punto de venta 2, jornada continua
+(3, 'L-V', '08:30:00', '15:00:00'),     -- Gestoria
+(4, 'L-V', '08:00:00', '17:00:00'),     -- Taller Norte
+(4, 'S', '09:00:00', '13:00:00'),
+(5, 'L-J', '08:00:00', '17:00:00'),     -- Taller Sur
+(5, 'V', '08:00:00', '15:00:00');
 
 -- Insertar datos en la tabla Comerciales
 -- Corresponde a los empleados 5 y 6, cada uno en un punto de venta
