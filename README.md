@@ -235,7 +235,7 @@ Como comercial quiero disponer de la siguiente información sobre mi estado en e
   - Tipo de seguro sobre el vehículo
   - Sistema de pagos del seguro (mensual, trimestral o anual)
   - Fecha de inicio del seguro
-  - Fecha de vigencia del seguro
+  - Fecha de fin del seguro
 - Información sobre clientes que hayan comprado vehículos:
   - DNI
   - Nombre completo
@@ -287,7 +287,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-12:** el precio de un vehículo no puede ser negativo.
 
-**RN-13:** la fecha de vigencia de un seguro debe ser posterior a su fecha de inicio.
+**RN-13:** la fecha de fin de un seguro debe ser posterior a su fecha de inicio.
 
 **RN-14:** el precio de una reparación no puede ser negativo.
 
@@ -307,7 +307,7 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-22:** la fecha de contratación de un seguro no puede ser posterior a su fecha de inicio.
 
-**RN-23:** la cantidad de recambios solicitados en un pedido tiene que ser mayor a 0
+**RN-23:** la cantidad de recambios solicitados en un pedido debe ser mayor que cero.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 <img width="1879" height="837" alt="image" src="https://github.com/user-attachments/assets/6ec44f62-d2ed-4cd3-a36c-76406fa80179" />
@@ -395,6 +395,7 @@ FK(gestoriaId)/Gestorias
 
 Mecanicos(id, especialidad, tallerId)
 PK(id)
+AK(id, tallerId, especialidad)
 FK(id)/Empleados
 FK(tallerId)/Talleres
 
@@ -413,7 +414,7 @@ Talleres(id)
 PK(id)
 FK(id)/Establecimientos
 
-Horarios(id, establecimientoId, diasSemana, horaApertura, horaCierre)
+Horarios(id, establecimientoId, diaSemana, horaApertura, horaCierre)
 PK(id)
 FK(establecimientoId)/Establecimientos
 
@@ -432,7 +433,7 @@ Reparaciones(id, descripcion, precio, duracion, fechaCita, estado, tipoReparacio
 PK(id)
 FK(id)/Servicios
 FK(tallerId)/Talleres
-FK(mecanicoId)/Mecanicos
+FK(mecanicoId, tallerId, tipoReparacion)/Mecanicos(id, tallerId, especialidad)
 
 Reseñas(id, clienteId, servicioId, puntuacion, comentario, fechaPublicacion)
 PK(id)
@@ -449,7 +450,7 @@ Fotos(id, vehiculoId, enlace, fechaSubida, esPrincipal)
 PK(id)
 FK(vehiculoId)/Vehiculos
 
-Seguros(id, vehiculoId, gestoriaId, fechaContratacion, fechaInicioSeguro, fechaVigenciaSeguro, sistemaPagos, tipo)
+Seguros(id, vehiculoId, gestoriaId, fechaContratacion, fechaInicioSeguro, fechaFinSeguro, sistemaPagos, tipo)
 PK(id)
 FK(vehiculoId)/Vehiculos
 FK(gestoriaId)/Gestorias
