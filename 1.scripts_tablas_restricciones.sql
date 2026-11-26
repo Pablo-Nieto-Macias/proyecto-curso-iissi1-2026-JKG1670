@@ -97,8 +97,11 @@ CREATE TABLE Talleres (
 CREATE TABLE Horarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
     establecimientoId INT NOT NULL,
-    diaSemana VARCHAR(10) NOT NULL CHECK (diaSemana IN
-        ('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo')),
+    -- Un dia suelto ('L') o un intervalo de dias ('L-V'). L, M, X, J, V, S, D
+    -- (X = miercoles). En un intervalo, el primer dia va antes que el segundo.
+    diaSemana VARCHAR(3) NOT NULL CHECK (diaSemana REGEXP '^[LMXJVSD](-[LMXJVSD])?$'
+        AND (CHAR_LENGTH(diaSemana) = 1
+             OR LOCATE(SUBSTRING(diaSemana, 1, 1), 'LMXJVSD') < LOCATE(SUBSTRING(diaSemana, 3, 1), 'LMXJVSD'))),
     horaApertura TIME NOT NULL,
     horaCierre TIME NOT NULL,
     FOREIGN KEY (establecimientoId) REFERENCES Establecimientos(id)
