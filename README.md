@@ -24,7 +24,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
   - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
       <img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/4ad987d6-d08f-43b2-9705-95e4df5e42d1" />
   - Mecánico: empleados que trabajan en talleres reparando vehículos enviados para clientes.
-  - Gestor: empleado que trabaja en una gestoría encargado de los seguros encargado de los seguros los vehículos vendidos.
+  - Gestor: empleado que trabaja en una gestoría y se encarga de los seguros de los vehículos vendidos.
 
 - Fotos: imagen de los vehículos a vender.
 
@@ -40,6 +40,8 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados, con distintos privilegios.
 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
+
+- Venta: operación en la que interviene el concesionario y un cliente. Puede ser que el concesionario venda un vehículo a un cliente (el cliente es el comprador) o que un cliente venda su vehículo al concesionario a cambio de dinero (el cliente es el vendedor). No existen ventas directas entre clientes.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/2754d09d-1169-493e-82b6-6817df50d41c" /></center>
 
 
@@ -66,7 +68,7 @@ Se trata del consumidor del servicio. Sus funciones se limitan a:
 - Consultar el catálogo de coches disponibles en la base de datos aplicando filtros de búsqueda.
 - Hacer uso del servicio de taller del concesionario y consultar información sobre sus reparaciones
 - Escribir, publicar y editar reseñas de su experiencia.
-- Publicar anuncios de sus propios vehículos para su posterior venta.
+- Vender sus propios vehículos al concesionario a cambio de dinero. El concesionario se encarga después de publicarlos y venderlos.
 
 #### 2. Comercial
 
@@ -166,11 +168,11 @@ quiero filtrar los vehículos por tipo, precio, marca y establecimiento, para en
 **RF6 -  Registro de ventas**
 
 Como comercial,
-quiero registrar una venta indicando cliente, vehículo y  tipo de venta  para llevar un control exacto de las operaciones.
+quiero registrar una venta indicando el cliente que interviene (como comprador o como vendedor), el vehículo y el tipo de venta, para llevar un control exacto de las operaciones.
 
 <u>Pruebas de aceptación</u>
 
-- El registro de venta será único, es decir, no existirá una venta con un vehículo ya vendido.
+- No existe la reventa entre clientes: un cliente sólo puede vender su vehículo al concesionario y, después, el concesionario puede venderlo a otro cliente. Por tanto, no se registrará la venta de un vehículo a un cliente mientras figure como vendido a otro cliente.
 - Las ventas serán registradas en menos de 24h una vez esté el pago realizado por parte del cliente.
 - Se aplica la RN-6.
 
@@ -183,7 +185,7 @@ para mantener el historial técnico de cada coche.
 <u>Pruebas de aceptación</u>
 
 - Un mecánico registra las reparaciones sólo realizadas por él, no las de otros mecánicos que trabajan en su taller.
-- Se aplica la RN-2.
+- Se aplican las reglas de negocio RN-2, RN-3 y RN-7.
 
 **RF8 - Reseñas y valoraciones**
 
@@ -267,13 +269,13 @@ Como mecánico quiero disponer de la siguiente información sobre mi estado en e
 
 **RN-2:** para abrir una orden de reparación sobre un vehículo, este debe estar asociado a un cliente.
 
-**RN-3:** una reparación de tipo específica sólo puede ser efectuada por un empleado( mecánico) que cumpla con dicha especialización.
+**RN-3:** una reparación de tipo específico sólo puede ser efectuada por un mecánico que tenga dicha especialización y que trabaje en el taller donde se realiza la reparación.
 
 **RN-4:** un usuario no puede registrarse dos veces con el mismo email.
 
 **RN-5:** un empleado no puede estar trabajando en más de un establecimiento a la vez, si tiene varios roles, todos ellos deberán ser del mismo establecimiento.
 
-**RN-6:** cuando se registre una nueva venta, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
+**RN-6:** cuando se registre una nueva venta en la que el concesionario vende un vehículo a un cliente, el estado del vehículo correspondiente debe cambiar automáticamente a Vendido.
 
 **RN-7:** un cliente no puede tener agendada más de una reparación en el mismo día.
 
@@ -441,10 +443,11 @@ FK(clienteId)/Clientes
 FK(servicioId)/Servicios
 AK(clienteId, servicioId)
 
-Vehiculos(id, matricula, precio, modelo, marca, tipo, combustible, estado, clienteId)
+Vehiculos(id, matricula, precio, modelo, marca, tipo, combustible, estado, clienteId, puntoVentaId)
 PK(id)
 AK(matricula)
 FK(clienteId)/Clientes
+FK(puntoVentaId)/PuntosDeVenta
 
 Fotos(id, vehiculoId, enlace, fechaSubida, esPrincipal)
 PK(id)
@@ -463,35 +466,25 @@ PK(id)
 FK(mecanicoId)/Mecanicos
 FK(recambioId)/Recambios
 
-EmpleadosVehiculos(id, empleadoId, vehiculoId)
-PK(id)
-FK(empleadoId)/Empleados
-FK(vehiculoId)/Vehiculos
-AK(empleadoId, vehiculoId)
-
-VehiculosRecambios(id, vehiculoId, recambioId)
-PK(id)
+VehiculosRecambios(vehiculoId, recambioId)
+PK(vehiculoId, recambioId)
 FK(vehiculoId)/Vehiculos
 FK(recambioId)/Recambios
-AK(vehiculoId, recambioId)
 
-UsosRecambios(id, reparacionId, recambioId, cantidad)
-PK(id)
+UsosRecambios(reparacionId, recambioId, cantidad)
+PK(reparacionId, recambioId)
 FK(reparacionId)/Reparaciones
 FK(recambioId)/Recambios
-AK(reparacionId, recambioId)
 ```
 
 
 Hay que distinguir entre las tablas que aparecen directamente en el modelo conceptual y las que necesitamos generar al transformar asociaciones:
 
-EmpleadosVehiculos	Empleado – Vehículo (exhibe):
+- **VehiculosRecambios** (Vehículo – Recambio, `esCompatibleCon`): un vehículo puede ser compatible con varios recambios y un recambio puede servir para varios vehículos. Es una asociación N:M sin atributos propios, así que se resuelve con una tabla auxiliar cuya PK es la pareja de claves foráneas.
+- **UsosRecambios** (clase de asociación `UsoRecambio` de la asociación `necesita` entre Reparación y Recambio): tiene el atributo `cantidad`, por lo que la tabla auxiliar lo incluye. Su PK es (reparacionId, recambioId).
+- **Resenas** (clase de asociación `Reseña` de la asociación `valora` entre Cliente y Servicio): su identificador propio es `id` y se impide que un cliente reseñe dos veces el mismo servicio con AK(clienteId, servicioId).
 
-Un empleado puede exhibir varios vehículos y un vehículo puede ser exhibido por varios empleados.
-
-VehiculosRecambios	Vehículo – Recambio (esCompatibleCon)	Un vehículo puede ser compatible con varios recambios y un recambio puede servir para varios vehículos.
-
-Estas dos son las tablas auxiliares para resolver las asociaciones N:M.
+Las asociaciones 1:N no generan tabla nueva, sino una clave foránea en el lado "muchos". En concreto, `exhibe` (Punto de venta – Vehículo) se resuelve con `Vehiculos.puntoVentaId` (puede ser nulo si el vehículo no está en exposición) y los roles `comprador` y `vendedor` (Cliente – Venta) con `Ventas.compradorId` y `Ventas.vendedorId`. Ambos pueden ser nulos, porque en cada venta interviene un único cliente y la otra parte es siempre el concesionario.
 
 
 Para transformar las especializaciones:
@@ -514,7 +507,21 @@ D. Servicio → Venta y Reparación
 
 ### 7.1.  Justificación de la estrategia de transformación de jerarquías
 
-- si se identificaron jerarquías en el MC.
+En el modelo conceptual se identifican cuatro jerarquías (la de Empleado es de segundo nivel, porque Empleado cuelga a su vez de Usuario). En todas hemos aplicado la misma estrategia, **una relación para cada clase de la jerarquía**, por las siguientes razones:
+
+- Las subclases tienen atributos y asociaciones propios que no comparten con sus hermanas (por ejemplo, `especialidad` y `tallerId` en Mecánico, `puntoVentaId` en Comercial, `compradorId` o `comercialId` en Venta). Con una sola tabla por jerarquía quedarían muchos atributos nulos que dependen del tipo de fila.
+- Varias jerarquías son **solapadas** (Empleado y Establecimiento). Un empleado puede tener varios roles a la vez, y con la técnica "una relación por clase" basta con tener filas en varias tablas hijas. Con una tabla única o con tablas sólo para las subclases habría que duplicar datos o añadir un discriminador múltiple.
+- Las asociaciones que afectan a la superclase (por ejemplo, un `Servicio` pertenece a un `Vehículo` y una `Reseña` valora un `Servicio`) se pueden referenciar con una única clave foránea a la tabla de la superclase, sin tener que distinguir entre ventas y reparaciones.
+- La PK de cada subclase es a la vez FK a la superclase, lo que garantiza la integridad referencial y mantiene la herencia en 3FN: los datos comunes están en la superclase y los específicos en la subclase.
+
+| Jerarquía | Subclases | Restricciones | Tablas |
+|:--|:--|:--|:--|
+| Usuario | Cliente, Empleado | completa, disjunta | Usuarios, Clientes, Empleados |
+| Empleado | Administrador, Comercial, Gestor, Mecánico | completa, solapada | Empleados, Administradores, Comerciales, Gestores, Mecanicos |
+| Establecimiento | Punto de venta, Gestoría, Taller | completa, solapada | Establecimientos, PuntosDeVenta, Gestorias, Talleres |
+| Servicio | Venta, Reparación | completa, disjunta | Servicios, Ventas, Reparaciones |
+
+Las restricciones de completitud y de disjunción del modelo conceptual no se pueden expresar sólo con claves foráneas, por lo que no quedan impuestas por el esquema relacional. Lo que sí se controla es el caso concreto de la jerarquía solapada de Empleado: con la regla de negocio RN-5, un empleado con varios roles debe pertenecer a un único establecimiento.
 
 
 ### 8. Matriz de trazabilidad MC/SQL (opcional):
