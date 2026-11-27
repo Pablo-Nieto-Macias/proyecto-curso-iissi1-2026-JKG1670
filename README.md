@@ -18,7 +18,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 ## 2. Glosario de términos
 
-- Clientes: usuarios que compran vehículos o solicitan una reparación.
+- Clientes: usuarios que compran vehículos al concesionario, le venden los suyos o solicitan una reparación.
 
 - Empleados: Se diferencian en ser mecánico, que trabajan en talleres, comercial, que está enfocado en la venta de coches y trabajan en los puntos de venta, gestor, que trabaja en una gestoría o administrador.
   - Comercial: empleado que trabaja en el punto de venta encargado de vender los vehículos.
@@ -37,7 +37,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 - Talleres: espacios con los que cuenta el concesionario en donde se reparan vehículos.
 <center><img width="330" height="181" alt="image" src="https://github.com/user-attachments/assets/85f8076d-a982-475a-a07a-40b907f9db78" /></center>
 
-- Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran vehículos, o bien empleados, con distintos privilegios.
+- Usuario: toda persona que puede acceder al sistema. Son o bien clientes, que compran o venden vehículos y solicitan reparaciones, o bien empleados, con distintos privilegios.
 
 - Vehículo: sean motos, coches, camiones… serán arreglados en los talleres y vendidos en los puntos de venta.
 
@@ -51,7 +51,7 @@ En cuanto a sus expectativas, él espera que el negocio crezca exponencialmente 
 
 **RG-01.** Sistema unificado y centralizado. El sistema integrará la información de todos los establecimientos de BLOB S.A.
 
-**RG-02.** Gestión de usuarios y roles. El sistema distinguirá entre clientes y empleados, y dentro de estos, entre comerciales, mecánicos y gestores.
+**RG-02.** Gestión de usuarios y roles. El sistema distinguirá entre clientes y empleados, y dentro de estos, entre administradores, comerciales, mecánicos y gestores.
 
 **RG-03.** Gestión de reparaciones. Cubrirá las reparaciones realizadas en los talleres, incluidos los recambios.
 
@@ -173,7 +173,7 @@ quiero registrar una venta indicando el cliente que interviene (como comprador o
 <u>Pruebas de aceptación</u>
 
 - No existe la reventa entre clientes: un cliente sólo puede vender su vehículo al concesionario y, después, el concesionario puede venderlo a otro cliente. Por tanto, no se registrará la venta de un vehículo a un cliente mientras figure como vendido a otro cliente.
-- Las ventas serán registradas en menos de 24h una vez esté el pago realizado por parte del cliente.
+- Las ventas serán registradas en menos de 24h una vez esté el pago realizado (por el cliente, si compra, o por el concesionario, si el cliente le vende su vehículo).
 - Se aplica la RN-6.
 
 **RF7 - Registro de reparaciones**
@@ -418,6 +418,7 @@ FK(id)/Establecimientos
 
 Horarios(id, establecimientoId, diaSemana, horaApertura, horaCierre)
 PK(id)
+AK(establecimientoId, diaSemana, horaApertura)
 FK(establecimientoId)/Establecimientos
 
 Servicios(id, fecha, vehiculoId)
@@ -484,7 +485,7 @@ Hay que distinguir entre las tablas que aparecen directamente en el modelo conce
 - **UsosRecambios** (clase de asociación `UsoRecambio` de la asociación `necesita` entre Reparación y Recambio): tiene el atributo `cantidad`, por lo que la tabla auxiliar lo incluye. Su PK es (reparacionId, recambioId).
 - **Resenas** (clase de asociación `Reseña` de la asociación `valora` entre Cliente y Servicio): su identificador propio es `id` y se impide que un cliente reseñe dos veces el mismo servicio con AK(clienteId, servicioId).
 
-Las asociaciones 1:N no generan tabla nueva, sino una clave foránea en el lado "muchos". En concreto, `exhibe` (Punto de venta – Vehículo) se resuelve con `Vehiculos.puntoVentaId` (puede ser nulo si el vehículo no está en exposición) y los roles `comprador` y `vendedor` (Cliente – Venta) con `Ventas.compradorId` y `Ventas.vendedorId`. Ambos pueden ser nulos, porque en cada venta interviene un único cliente y la otra parte es siempre el concesionario.
+Las asociaciones 1:N no generan tabla nueva, sino una clave foránea en el lado "muchos". En concreto, `exhibe` (Punto de venta – Vehículo) se resuelve con `Vehiculos.puntoVentaId` (puede ser nulo si el vehículo no está en exposición) y los roles `comprador` y `vendedor` (Cliente – Venta) con `Ventas.compradorId` y `Ventas.vendedorId`. Ambos pueden ser nulos, porque en cada venta interviene un único cliente y la otra parte es siempre el concesionario. Por la misma razón, `Ventas.fechaPublicacion` también puede ser nula: solo hay publicación cuando el concesionario vende un vehículo (el cliente no publica anuncios), y no la hay cuando el cliente vende al concesionario.
 
 
 Para transformar las especializaciones:
