@@ -108,17 +108,22 @@ BEGIN
 END//
 
 -- =====================================================
--- RN-6: cuando se registre una nueva venta, el estado del vehiculo
--- correspondiente debe cambiar automaticamente a Vendido.
+-- RN-6: cuando se registre una nueva venta en la que el concesionario
+-- vende un vehiculo a un cliente, el estado del vehiculo correspondiente
+-- debe cambiar automaticamente a Vendido.
+-- Solo aplica si hay comprador: si el cliente vende al concesionario
+-- (compradorId NULL, vendedorId informado) el vehiculo no pasa a Vendido.
 -- =====================================================
 CREATE TRIGGER RN6_venta_vehiculo_vendido
 AFTER INSERT ON Ventas
 FOR EACH ROW
 BEGIN
-    UPDATE Vehiculos v
-    JOIN Servicios s ON s.vehiculoId = v.id
-    SET v.estado = 'Vendido'
-    WHERE s.id = NEW.id;
+    IF NEW.compradorId IS NOT NULL THEN
+        UPDATE Vehiculos v
+        JOIN Servicios s ON s.vehiculoId = v.id
+        SET v.estado = 'Vendido'
+        WHERE s.id = NEW.id;
+    END IF;
 END//
 
 -- =====================================================
@@ -171,7 +176,7 @@ END //
 DELIMITER ;
 
 -- =====================================================
--- PRUEBAS (con los datos de poblar_datos.sql). Descomentar de una en una.
+-- PRUEBAS (con los datos de 5.script_poblado_tablas.sql). Descomentar de una en una.
 -- =====================================================
 
 -- RN-2: debe FALLAR (el vehiculo 2, Ibiza, no tiene cliente)
@@ -187,11 +192,17 @@ DELIMITER ;
 -- RN-5: debe FALLAR (el empleado 5 es comercial en el establecimiento 1 y la gestoria es el 3)
 -- INSERT INTO Gestores (id, gestoriaId) VALUES (5, 3);
 
--- RN-6: debe cambiar el estado del vehiculo 2 a Vendido
+-- RN-6: debe cambiar el estado del vehiculo 2 a Vendido (vende el concesionario, hay comprador)
 -- INSERT INTO Servicios (fecha, vehiculoId) VALUES ('2026-11-25', 2);
--- INSERT INTO Ventas (id, fechaPublicacion, tipo, precioVenta, compradorId, comercialId)
--- VALUES (LAST_INSERT_ID(), '2026-11-01', 'Ocasion', 12500.00, 1, 5);
+-- INSERT INTO Ventas (id, fechaPublicacion, tipo, precioVenta, compradorId, vendedorId, comercialId)
+-- VALUES (LAST_INSERT_ID(), '2026-11-01', 'Ocasion', 12500.00, 1, NULL, 5);
 -- SELECT id, estado FROM Vehiculos WHERE id = 2;
+
+-- RN-6: NO debe cambiar el estado del vehiculo 3 (el cliente 1 vende su vehiculo al concesionario)
+-- INSERT INTO Servicios (fecha, vehiculoId) VALUES ('2026-11-25', 3);
+-- INSERT INTO Ventas (id, fechaPublicacion, tipo, precioVenta, compradorId, vendedorId, comercialId)
+-- VALUES (LAST_INSERT_ID(), NULL, 'SegundaMano', 7000.00, NULL, 1, 5);
+-- SELECT id, estado FROM Vehiculos WHERE id = 3;   -- sigue Disponible
 
 -- RN-7: debe FALLAR (el cliente 1 ya tiene la reparacion 7 agendada el 2026-12-02)
 -- INSERT INTO Servicios (fecha, vehiculoId) VALUES ('2026-11-25', 1);
