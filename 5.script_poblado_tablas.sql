@@ -29,15 +29,16 @@ INSERT INTO Clientes (id) VALUES
 
 -- Insertar datos en la tabla Empleados
 -- Corresponde a los usuarios empleado (4 al 11). La fecha de contratacion coincide con la de registro.
+-- El salario es mensual.
 INSERT INTO Empleados (id, salario, fechaContratacion, fechaBaja) VALUES
-(4, 42000.00, '2025-06-01', NULL),   -- Administrador
-(5, 28000.00, '2025-09-01', NULL),   -- Comercial
-(6, 27500.00, '2025-11-10', NULL),   -- Comercial
-(7, 30000.00, '2025-07-15', NULL),   -- Gestor
-(8, 24000.00, '2025-05-20', NULL),   -- Mecanico
-(9, 25500.00, '2025-08-05', NULL),   -- Mecanico
-(10, 24500.00, '2026-01-08', NULL),  -- Mecanico
-(11, 26000.00, '2026-02-17', NULL);  -- Mecanico
+(4, 3500.00, '2025-06-01', NULL),   -- Administrador
+(5, 2300.00, '2025-09-01', NULL),   -- Comercial
+(6, 2250.00, '2025-11-10', NULL),   -- Comercial
+(7, 2500.00, '2025-07-15', NULL),   -- Gestor
+(8, 2000.00, '2025-05-20', NULL),   -- Mecanico
+(9, 2100.00, '2025-08-05', NULL),   -- Mecanico
+(10, 2050.00, '2026-01-08', NULL),  -- Mecanico
+(11, 2150.00, '2026-02-17', NULL);  -- Mecanico
 
 -- Insertar datos en la tabla Administradores
 INSERT INTO Administradores (id) VALUES
@@ -98,14 +99,15 @@ INSERT INTO Mecanicos (id, especialidad, tallerId) VALUES
 (11, 'ITV', 5);                -- Taller Sur
 
 -- Insertar datos en la tabla Vehiculos
--- clienteId solo se rellena en los vehiculos ya vendidos
-INSERT INTO Vehiculos (matricula, precio, modelo, marca, tipo, combustible, estado, clienteId) VALUES
-('1234ABC', 18500.00, 'Corolla', 'Toyota', 'Coche', 'Hibrido', 'Vendido', 1),           -- id 1, vendido a Ana
-('5678DEF', 12900.00, 'Ibiza', 'SEAT', 'Coche', 'Gasolina', 'Disponible', NULL),        -- id 2
-('9012GHI', 7800.00, 'MT-07', 'Yamaha', 'Moto', 'Gasolina', 'Disponible', NULL),        -- id 3
-('3456JKL', 45000.00, 'Actros', 'Mercedes', 'Camion', 'Diesel', 'Vendido', 2),          -- id 4, vendido a Luis
-('7890MNO', 32000.00, 'Model 3', 'Tesla', 'Coche', 'Electrico', 'Vendido', 3),          -- id 5, vendido a Marta
-('2468PQR', 9900.00, 'Clio', 'Renault', 'Coche', 'Diesel', 'EnReparacion', NULL);       -- id 6, en reparacion
+-- clienteId solo se rellena en los vehiculos que son propiedad de un cliente (RN-2 exige
+-- cliente para poder reparar). puntoVentaId solo en los vehiculos expuestos en un punto de venta.
+INSERT INTO Vehiculos (matricula, precio, modelo, marca, tipo, combustible, estado, clienteId, puntoVentaId) VALUES
+('1234ABC', 18500.00, 'Corolla', 'Toyota', 'Coche', 'Hibrido', 'Vendido', 1, NULL),           -- id 1, vendido a Ana
+('5678DEF', 12900.00, 'Ibiza', 'SEAT', 'Coche', 'Gasolina', 'Disponible', NULL, 1),           -- id 2, comprado por BLOB a Luis, expuesto en el punto de venta 1
+('9012GHI', 7800.00, 'MT-07', 'Yamaha', 'Moto', 'Gasolina', 'Disponible', NULL, 1),           -- id 3, expuesta en el punto de venta 1
+('3456JKL', 45000.00, 'Actros', 'Mercedes', 'Camion', 'Diesel', 'Vendido', 2, NULL),          -- id 4, vendido a Luis
+('7890MNO', 32000.00, 'Model 3', 'Tesla', 'Coche', 'Electrico', 'Vendido', 3, NULL),          -- id 5, vendido a Marta
+('2468PQR', 9900.00, 'Clio', 'Renault', 'Coche', 'Diesel', 'EnReparacion', 2, NULL);          -- id 6, de Luis, en reparacion
 
 -- Insertar datos en la tabla Fotos
 -- Un maximo de una foto principal por vehiculo
@@ -125,7 +127,7 @@ INSERT INTO Seguros (vehiculoId, gestoriaId, fechaContratacion, fechaInicioSegur
 (5, 3, '2026-06-01', '2026-06-15', '2027-06-15', 'Mensual', 'Parcial');         -- Model 3
 
 -- Insertar datos en la tabla Servicios
--- Servicios 1-3: ventas | 4-7: reparaciones
+-- Servicios 1-3: ventas (el concesionario vende) | 4-7: reparaciones | 8: venta (un cliente vende al concesionario)
 INSERT INTO Servicios (fecha, vehiculoId) VALUES
 ('2026-03-01', 1),   -- id 1, venta del Corolla
 ('2026-05-10', 4),   -- id 2, venta del Actros
@@ -133,14 +135,17 @@ INSERT INTO Servicios (fecha, vehiculoId) VALUES
 ('2026-10-20', 5),   -- id 4, reparacion del Model 3
 ('2026-09-01', 1),   -- id 5, reparacion del Corolla
 ('2026-11-05', 6),   -- id 6, reparacion del Clio
-('2026-11-20', 2);   -- id 7, reparacion del Ibiza
+('2026-11-20', 1),   -- id 7, reparacion del Corolla
+('2026-09-25', 2);   -- id 8, venta del Ibiza (Luis lo vende al concesionario)
 
 -- Insertar datos en la tabla Ventas
--- La fecha de publicacion es anterior o igual a la fecha del servicio
-INSERT INTO Ventas (id, fechaPublicacion, tipo, precioVenta, compradorId, comercialId) VALUES
-(1, '2026-02-10', 'SemiNuevo', 18200.00, 1, 5),   -- Ana compra el Corolla a Elena
-(2, '2026-04-20', 'Ocasion', 44000.00, 2, 6),     -- Luis compra el Actros a Pablo
-(3, '2026-05-01', 'Nuevo', 31500.00, 3, 5);       -- Marta compra el Model 3 a Elena
+-- En cada venta interviene un unico cliente: comprador (vende el concesionario) o vendedor (vende el cliente).
+-- La fecha de publicacion (solo si vende el concesionario) es anterior o igual a la fecha del servicio.
+INSERT INTO Ventas (id, fechaPublicacion, tipo, precioVenta, compradorId, vendedorId, comercialId) VALUES
+(1, '2026-02-10', 'SemiNuevo', 18200.00, 1, NULL, 5),    -- Ana compra el Corolla a BLOB (registra Elena)
+(2, '2026-04-20', 'Ocasion', 44000.00, 2, NULL, 6),      -- Luis compra el Actros a BLOB (registra Pablo)
+(3, '2026-05-01', 'Nuevo', 31500.00, 3, NULL, 5),        -- Marta compra el Model 3 a BLOB (registra Elena)
+(8, NULL, 'SegundaMano', 9500.00, NULL, 2, 5);           -- Luis vende el Ibiza a BLOB (registra Elena)
 
 -- Insertar datos en la tabla Reparaciones
 -- El mecanico siempre pertenece al taller de la reparacion y su especialidad coincide con el tipo
@@ -148,7 +153,7 @@ INSERT INTO Reparaciones (id, descripcion, precio, duracion, fechaCita, estado, 
 (4, 'Revision del sistema de carga de la bateria', 180.00, 90, '2026-10-22', 'Finalizada', 'Electricas', 5, 9),
 (5, 'Cambio de pastillas y discos de freno delanteros', 320.50, 120, '2026-09-10', 'Finalizada', 'FrenosYSuspension', 4, 8),
 (6, 'Cambio de aceite y filtros', 95.00, 60, '2026-11-23', 'EnCurso', 'Mecanicas', 4, 10),
-(7, 'Revision ITV previa a la venta', 45.00, 45, '2026-12-02', 'Pendiente', 'ITV', 5, 11);
+(7, 'Revision ITV del Corolla', 45.00, 45, '2026-12-02', 'Pendiente', 'ITV', 5, 11);
 
 -- Insertar datos en la tabla Resenas
 -- Cada cliente resena un servicio suyo, con fecha posterior al servicio
@@ -196,14 +201,3 @@ INSERT INTO VehiculosRecambios (vehiculoId, recambioId) VALUES
 (5, 5),
 (6, 3),
 (6, 4);
-
--- Insertar datos en la tabla EmpleadosVehiculos
--- Empleado asignado a cada vehiculo (comerciales y mecanicos)
-INSERT INTO EmpleadosVehiculos (empleadoId, vehiculoId) VALUES
-(5, 2),    -- Elena (comercial) gestiona el Ibiza
-(5, 3),    -- Elena (comercial) gestiona la Yamaha
-(6, 6),    -- Pablo (comercial) gestiona el Clio
-(8, 1),    -- Jorge (mecanico) asignado al Corolla
-(9, 5),    -- Sofia (mecanica) asignada al Model 3
-(10, 6),   -- Raul (mecanico) asignado al Clio
-(11, 2);   -- Irene (mecanica) asignada al Ibiza
