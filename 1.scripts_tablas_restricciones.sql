@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS UsosRecambios;
 DROP TABLE IF EXISTS VehiculosRecambios;
-DROP TABLE IF EXISTS EmpleadosVehiculos;
 DROP TABLE IF EXISTS PedidosRecambios;
 DROP TABLE IF EXISTS Recambios;
 DROP TABLE IF EXISTS Seguros;
@@ -165,8 +164,12 @@ CREATE TABLE Vehiculos (
         ('Electrico', 'Hibrido', 'Gasolina', 'Diesel')),
     estado VARCHAR(15) NOT NULL CHECK (estado IN
         ('Disponible', 'Vendido', 'EnReparacion')),
-    clienteId INT,
+    clienteId INT,       -- propietario (cliente); NULL si el vehiculo es del concesionario
+    puntoVentaId INT,    -- punto de venta donde se exhibe (asociacion exhibe); NULL si no esta expuesto
     FOREIGN KEY (clienteId) REFERENCES Clientes(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+    FOREIGN KEY (puntoVentaId) REFERENCES PuntosDeVenta(id)
         ON DELETE SET NULL
         ON UPDATE CASCADE,
     CONSTRAINT RN12 CHECK (precio >= 0)
@@ -218,16 +221,24 @@ CREATE TABLE Servicios (
 
 CREATE TABLE Ventas (
     id INT PRIMARY KEY,
-    fechaPublicacion DATE NOT NULL,
+    -- Solo hay fecha de publicacion cuando el concesionario vende (es quien publica el anuncio).
+    -- Si el cliente vende su vehiculo al concesionario, no hay publicacion: NULL.
+    fechaPublicacion DATE,
     tipo VARCHAR(15) NOT NULL CHECK (tipo IN
         ('Ocasion', 'KM0', 'Nuevo', 'SemiNuevo', 'SegundaMano')),
     precioVenta DECIMAL(10, 2) NOT NULL,
-    compradorId INT NOT NULL,
+    -- En cada venta interviene un unico cliente: comprador (el concesionario vende)
+    -- o vendedor (el cliente vende al concesionario). La otra parte es siempre el concesionario.
+    compradorId INT,
+    vendedorId INT,
     comercialId INT NOT NULL,
     FOREIGN KEY (id) REFERENCES Servicios(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (compradorId) REFERENCES Clientes(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (vendedorId) REFERENCES Clientes(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     FOREIGN KEY (comercialId) REFERENCES Comerciales(id)
@@ -331,18 +342,6 @@ CREATE TABLE VehiculosRecambios (
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (recambioId) REFERENCES Recambios(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-CREATE TABLE EmpleadosVehiculos (
-    empleadoId INT NOT NULL,
-    vehiculoId INT NOT NULL,
-    PRIMARY KEY (empleadoId, vehiculoId),
-    FOREIGN KEY (empleadoId) REFERENCES Empleados(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (vehiculoId) REFERENCES Vehiculos(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
